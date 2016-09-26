@@ -276,106 +276,66 @@ function printAllToConsole(dataObj){
 printAllToConsole(dataObject);
 */
 
-function getFirstName(){
+function initSearch(){
+	alert("Hello World");
+
 	// get all the information you need to run the search
-	var theirFirstName = prompt("Do you know their first name?");
+    var searchFirstName = prompt("Do you know the first name of who you are searching for? (yes or no)");
+    if (searchFirstName.toLowerCase() == "yes") {
+        followUpQuestion();
+    } else if (searchFirstName.toLowerCase == "no"){
 
-	switch (theirFirstName){
-	    case "Billy":
-	        name = "Found one match";
-	        break;
-	    case "Uma":
-	        name = "Found one match";
-	        break;
-	    case "Michael":
-	        name = "Found one match";
-	        break;
-	    case "Jon":
-	        name = "Found one match";
-	        break;
-	    case "Jack":
-	        name = "Found one match";
-	        break;
-	    case "Jen":
-	        name = "Found one match";
-	        break;
-	    case "Mister":
-	        name = "Found one match";
-	        break;
-	    case "Missuz":
-	        name = "Found one match";
-	        break;
-	    case "Joy":
-	    	name = "Found one match";
-	        break;
-	    case "Mader":
-	    	name = "Found one match";
-	        break;
-	    case "Jill":
-	    	name = "Found one match";
-	        break;
-	    case "Ralph":
-	    	name = "Found one match";
-	        break;
-	    case "Jasmine":
-	    	name = "Found one match";
-	        break;
-	    case "Annie":
-	    	name = "Found one match";
-	        break;
-	    case "Dave":
-	    	name = "Found one match";
-	        break;
-	    case "Amii":
-	    	name = "Found one match";
-	        break;
-	    case "Regina":
-	    	name = "Found one match";
-	        break;
-	    case "Hana":
-	    	name = "Found one match";
-	        break;
-	    case "Eloise":
-	    	name = "Found one match";
-	        break;
-	    case "Mattias":
-	    	name = "Found one match";
-	        break;
-	    case "Ellen":
-	    	name = "Found one match";
-	        break;
-	    case "Joey":
-	    	name = "Found one match";
-	        break;
-	    }
-
-	var yourSpouse = prompt("Do you know their current spouse?");
-
-
-
-	var checkGender = function () {
-
-  	var yourGender = prompt("Do you know their gender?");
-
-    if (yourGender.length > 0) {
-      if (yourGender === 'male' || yourGender === 'female') {
-            return true;
-      } else {
-            return false;
-      }
-    } else {
-      return false;
     }
-};
+    // then pass that info to the respective function.
 
+    // var result = getPersonInfo("J", "T");
 
+    // once the search is done, pass the results to the responder function
+    // responder(result);
+}
 
-	var yourBirth = prompt("Do you know their date of birth?");
-	var yourHeight = prompt("Do you know their height?");
-	var yourWeight = prompt("Do you know their weight?");
-	var yourEyeColor = prompt("Do you know their eye color?");
-	var yourOccupation = prompt("Do you know their occupation?");
-	var yourParents = prompt("Do you know their parents?");
+function followUpQuestion(){
+    var searchLastName = prompt("Do you know their last name? (yes or no)")
+    if(searchLastName.toLowerCase() == "yes") {
+        followUpQuestion2();
+    }
+    else if(searchLastName.toLowerCase =="no") {
+        followUpQuestion2a()
+    }
+
+}
+
+// function followUpQuestion2a() {
+//     var 
+// }
+
+function followUpQuestion2(){
+    var enterFirstName = prompt("Please enter first name.")
+    if (enterFirstName.toLowerCase == Billy) {
+        getPersonInfo();
+    }
+}
+
+function responder(results){
+    // results may be a list of strings, an object, or a single string. 
+    alert(results);
+}
+
+function getPersonInfo(firstname, lastname){
+    var result = "This will be the information for whoever you searched for";
+    // look up person's information
+    return result;
+}
+
+function getFamily(){
+    // return list of names of immediate family members
+}
+
+// there will be much more here, and some of the code above will certainly change
+
+initSearch();
+// window.close(); // exit window as the end of the session -- you may remove this
+
 
 	// then pass that info to the respective function.
 	var result = getPersonInfo("J", "T")
@@ -401,35 +361,5 @@ function getFamily(){
 
 // there will be much more here, and some of the code above will certainly change
 
-getFirstName();
-// window.close(); // exit window as the end of the session -- you may remove this
-
-//
-function printAllToConsole(dataObj){
-	for (var key in dataObj) {
-		if (dataObj.hasOwnProperty(key)) {
-			console.log(key + " -> " + JSON.stringify(dataObj[key]));
-		}
-	}
-}
-printAllToConsole(dataObject);
-//
-//
-
-
-
-
-// function checkFirstName(firstName) {
-// 	var firstName = ["Billy", "Uma", "Michael", "Jon", "Jack", "Jen", "Mister", "Missuz", "Joy", "Mader", "Jill", "Ralph", "Jasmine", "Annie", "Dave", "Amii", "Regina", "Hana", "Eloise", "Mattias", "Ellen", "Joey"];
-//     return firstName === "Joey";
-//     var = prompt("What the first name of the person you are looking for?");
-// }
-
-// function myFunction() {
-//     document.getElementById("demo").innerHTML = firstName.filter(checkFirstName);
-// }
-
-
-
-
-
+initSearch();
+window.close(); // exit window as the end of the session -- you may remove this
