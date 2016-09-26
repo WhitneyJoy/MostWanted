@@ -409,13 +409,13 @@ function getPersonInfo(firstname, lastname){
 
 function getFamily(){
 	// return list of names of immediate family members
-=======
-//
+
 function printAllToConsole(dataObj){
     for (var key in dataObj) {
         if (dataObj.hasOwnProperty(key)) {
             console.log(key + " -> " + JSON.stringify(dataObj[key]));
         }
     }
+
 }
 printAllToConsole(dataObject);
