@@ -342,7 +342,7 @@ initSearch();
 
 	// once the search is done, pass the results to the responder function
 	responder(result);
-}
+
 
 function responder(results){
 	// results may be a list of strings, an object, or a single string. 
