@@ -370,7 +370,6 @@ getGender();
 
 
 
-
     var yourBirth = prompt("Do you know their date of birth?");
     var yourHeight = prompt("Do you know their height?");
     var yourWeight = prompt("Do you know their weight?");
