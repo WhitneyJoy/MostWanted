@@ -347,11 +347,17 @@ function getFirstName(){
             name = "Found one match";
             break;
         }
+
+getFirstName();
+
+}
+
+
+function getGender(){
     var yourSpouse = prompt("Do you know their current spouse?");
-    var checkGender = function () {
     var yourGender = prompt("Do you know their gender?");
     if (yourGender.length > 0) {
-      if (yourGender === 'male' || yourGender === 'female') {
+      if (yourGender === 'male' || yourGender === 'female' || yourGender === 'unknown') {
             return true;
       } else {
             return false;
@@ -360,41 +366,43 @@ function getFirstName(){
       return false;
     }
 };
+getGender();
+
+
+
+
     var yourBirth = prompt("Do you know their date of birth?");
     var yourHeight = prompt("Do you know their height?");
     var yourWeight = prompt("Do you know their weight?");
     var yourEyeColor = prompt("Do you know their eye color?");
     var yourOccupation = prompt("Do you know their occupation?");
     var yourParents = prompt("Do you know their parents?");
-    // then pass that info to the respective function.
-    var result = getPersonInfo("J", "T")
-    // once the search is done, pass the results to the responder function
-    responder(result);
-}
-function responder(results){
-    // results may be a list of strings, an object, or a single string. 
-    alert(results);
-}
-function getPersonInfo(firstname, lastname){
-    var result = "This will be the information for whoever you searched for";
-    // look up person's information
-    return result;
-}
-function getFamily(){
-    // return list of names of immediate family members
-}
-// there will be much more here, and some of the code above will certainly change
-getFirstName();
-// window.close(); // exit window as the end of the session -- you may remove this
 
 
+
+  // Remove this from your final submission
+function printAllToConsole(dataObj){
+	for (var key in dataObj) {
+		if (dataObj.hasOwnProperty(key)) {
+			console.log(key + " -> " + JSON.stringify(dataObj[key]));
+		}
+	}
+}
+printAllToConsole(dataObject);
+
+ 
+function initSearch(){
+	alert("Hello World");
+
+	// get all the information you need to run the search
+	var yourName = prompt("Who do you want to search for?");
 
 	// then pass that info to the respective function.
 	var result = getPersonInfo("J", "T")
 
 	// once the search is done, pass the results to the responder function
 	responder(result);
-
+}
 
 function responder(results){
 	// results may be a list of strings, an object, or a single string. 
@@ -409,13 +417,11 @@ function getPersonInfo(firstname, lastname){
 
 function getFamily(){
 	// return list of names of immediate family members
-
-function printAllToConsole(dataObj){
-    for (var key in dataObj) {
-        if (dataObj.hasOwnProperty(key)) {
-            console.log(key + " -> " + JSON.stringify(dataObj[key]));
-        }
-    }
-
 }
-printAllToConsole(dataObject);
+
+// there will be much more here, and some of the code above will certainly change
+
+initSearch();
+// window.close(); // exit window as the end of the session -- you may remove this
+
+
