@@ -276,21 +276,34 @@ function initSearch(){
 	while (!(answer == "yes" || answer == "no")){
 		answer = prompt("Do you know who you are looking for? (yes or no)");
 	}
-	if(answer == "yes"){
-		while(firstName == ""){
-			firstName = prompt("What's their first name?");
-		}
-		while (lastName == ""){
-			lastName = prompt("What is their last name?");
-		}
-		while (!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
-			lookingFor=prompt("Are you looking for their info (1), family (2) descendents (3) or next of kin (4).  (Please type in a number between 1-4)");
+	switch(answer){
+		case "yes":
+			while(firstName == ""){
+			firstName = prompt ("What's their first name?");
+	}
+			while(lastName == ""){
+			lastName = prompt ("What's their last name?");
+	}
+			while(!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
+				lookingFor=prompt("Are you looking for their info (1), family (2), descendants (3), or next of kin (4). (Please type a number between 1-4)");
+				//filter? can we use a for loop here with a filter?
+	}
+		break;
+		case "no":
+			alert("Please come back when you have more information.");
+		break;
+		default:
+			alert("Please enter yes or no.");
+		break;
+	}
 
-		}
+
+
+
 	//switch(lookingFor) each is a function call
 	//lookingForInfo(firstName, LastName);
 	//lookingForFamily ()
-	}else{
+
 		for (var i=0; i < 5; i++) {
 			while(characteristic == ""){
 
@@ -306,7 +319,7 @@ function initSearch(){
 		}
 	}
 
-}
+
 
 		function getInfo(firstName, lastName){
 			var getInfoResults = "";
