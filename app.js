@@ -305,6 +305,7 @@ function initSearch(){
 			responder(results);
 		}
 		function getFamily(firstName, lastName){
+			
 
 		}
 		function getDescendants(firstName, lastName){
@@ -318,6 +319,7 @@ function initSearch(){
 		}function responder(results){
 			alert(results);
 		}
+
 
 
 
