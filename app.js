@@ -265,6 +265,62 @@ var dataObject = {
 	}
 };
 
+function initSearch(){
+	var answer = "";
+	var firstName = "";
+	var lastName = "";
+	var lookingFor = "";
+	var characteristic = "";
+	var characteristics = [];
+
+	while (!(answer == "yes" || answer == "no")){
+		answer = prompt("Do you know who you are looking for? (yes or no)");
+	}
+	if(answer == "yes"){
+		while(firstName == ""){
+			firstName = prompt("What's their first name?");
+		}
+		while (lastName == ""){
+			lastName = prompt("What is their last name?");
+		}
+		while (lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4"){
+			lookingFor=prompt("Are you looking for their info (1), family (2) descendents (3) or next of kin (4).  (Please type in a number between 1-4)");
+
+}
+//switch(lookingFor) each is a function call
+//lookingForInfo(firstName, LastName);
+	}else{
+		while(characteristic != ""){
+			characteristic = prompt("Enter the characteristic of the person you are looking for");
+			//ask all 5 characteristics up front then filter it
+			//need switch case getFamily(firstName, lastName) getDescendants(firstName, lastName) getKin(firstName, LastName);
+			characteristics.push(characteristic);
+			//begin filtering characteristics
+		}
+	}
+}
+
+		function getInfo(firstName, lastName){
+			var results = "";
+			responder(results);
+		}
+		function getFamily(firstName, lastName){
+
+		}
+		function getDescendants(firstName, lastName){
+
+		}
+		function getKin(firstName, lastName){
+
+		}
+		function filterPeople(characteristics){
+
+		}function responder(results){
+			alert(results);
+		}
+
+
+
 /*  Remove this from your final submission
 function printAllToConsole(dataObj){
 	for (var key in dataObj) {
@@ -276,151 +332,152 @@ function printAllToConsole(dataObj){
 printAllToConsole(dataObject);
 */
 
-function getFirstName(){
-    // get all the information you need to run the search
-    var theirFirstName = prompt("Do you know their first name?");
-    switch (theirFirstName){
-        case "Billy":
-            name = "Found one match";
-            break;
-        case "Uma":
-            name = "Found one match";
-            break;
-        case "Michael":
-            name = "Found one match";
-            break;
-        case "Jon":
-            name = "Found one match";
-            break;
-        case "Jack":
-            name = "Found one match";
-            break;
-        case "Jen":
-            name = "Found one match";
-            break;
-        case "Mister":
-            name = "Found one match";
-            break;
-        case "Missuz":
-            name = "Found one match";
-            break;
-        case "Joy":
-            name = "Found one match";
-            break;
-        case "Mader":
-            name = "Found one match";
-            break;
-        case "Jill":
-            name = "Found one match";
-            break;
-        case "Ralph":
-            name = "Found one match";
-            break;
-        case "Jasmine":
-            name = "Found one match";
-            break;
-        case "Annie":
-            name = "Found one match";
-            break;
-        case "Dave":
-            name = "Found one match";
-            break;
-        case "Amii":
-            name = "Found one match";
-            break;
-        case "Regina":
-            name = "Found one match";
-            break;
-        case "Hana":
-            name = "Found one match";
-            break;
-        case "Eloise":
-            name = "Found one match";
-            break;
-        case "Mattias":
-            name = "Found one match";
-            break;
-        case "Ellen":
-            name = "Found one match";
-            break;
-        case "Joey":
-            name = "Found one match";
-            break;
-        }
+// function getFirstName(){
+//     // get all the information you need to run the search
+//     var theirFirstName = prompt("Do you know their first name?");
+//     switch (theirFirstName){
+//         case "Billy":
+//             name = "Found one match";
+//             break;
+//         case "Uma":
+//             name = "Found one match";
+//             break;
+//         case "Michael":
+//             name = "Found one match";
+//             break;
+//         case "Jon":
+//             name = "Found one match";
+//             break;
+//         case "Jack":
+//             name = "Found one match";
+//             break;
+//         case "Jen":
+//             name = "Found one match";
+//             break;
+//         case "Mister":
+//             name = "Found one match";
+//             break;
+//         case "Missuz":
+//             name = "Found one match";
+//             break;
+//         case "Joy":
+//             name = "Found one match";
+//             break;
+//         case "Mader":
+//             name = "Found one match";
+//             break;
+//         case "Jill":
+//             name = "Found one match";
+//             break;
+//         case "Ralph":
+//             name = "Found one match";
+//             break;
+//         case "Jasmine":
+//             name = "Found one match";
+//             break;
+//         case "Annie":
+//             name = "Found one match";
+//             break;
+//         case "Dave":
+//             name = "Found one match";
+//             break;
+//         case "Amii":
+//             name = "Found one match";
+//             break;
+//         case "Regina":
+//             name = "Found one match";
+//             break;
+//         case "Hana":
+//             name = "Found one match";
+//             break;
+//         case "Eloise":
+//             name = "Found one match";
+//             break;
+//         case "Mattias":
+//             name = "Found one match";
+//             break;
+//         case "Ellen":
+//             name = "Found one match";
+//             break;
+//         case "Joey":
+//             name = "Found one match";
+//             break;
+//         }
 
-getFirstName();
+// getFirstName();
 
-}
-
-
-function getGender(){
-    var yourSpouse = prompt("Do you know their current spouse?");
-    var yourGender = prompt("Do you know their gender?");
-    if (yourGender.length > 0) {
-      if (yourGender === 'male' || yourGender === 'female' || yourGender === 'unknown') {
-            return true;
-      } else {
-            return false;
-      }
-    } else {
-      return false;
-    }
-};
-getGender();
+// }
 
 
-
-    var yourBirth = prompt("Do you know their date of birth?");
-    var yourHeight = prompt("Do you know their height?");
-    var yourWeight = prompt("Do you know their weight?");
-    var yourEyeColor = prompt("Do you know their eye color?");
-    var yourOccupation = prompt("Do you know their occupation?");
-    var yourParents = prompt("Do you know their parents?");
+// function getGender(){
+//     var yourSpouse = prompt("Do you know their current spouse?");
+//     var yourGender = prompt("Do you know their gender?");
+//     if (yourGender.length > 0) {
+//       if (yourGender === 'male' || yourGender === 'female' || yourGender === 'unknown') {
+//             return true;
+//       } else {
+//             return false;
+//       }
+//     } else {
+//       return false;
+//     }
+// };
+// getGender();
 
 
 
-  // Remove this from your final submission
-function printAllToConsole(dataObj){
-	for (var key in dataObj) {
-		if (dataObj.hasOwnProperty(key)) {
-			console.log(key + " -> " + JSON.stringify(dataObj[key]));
-		}
-	}
-}
-printAllToConsole(dataObject);
+
+//     var yourBirth = prompt("Do you know their date of birth?");
+//     var yourHeight = prompt("Do you know their height?");
+//     var yourWeight = prompt("Do you know their weight?");
+//     var yourEyeColor = prompt("Do you know their eye color?");
+//     var yourOccupation = prompt("Do you know their occupation?");
+//     var yourParents = prompt("Do you know their parents?");
+
+
+
+//   // Remove this from your final submission
+// function printAllToConsole(dataObj){
+// 	for (var key in dataObj) {
+// 		if (dataObj.hasOwnProperty(key)) {
+// 			console.log(key + " -> " + JSON.stringify(dataObj[key]));
+// 		}
+// 	}
+// }
+// printAllToConsole(dataObject);
 
  
-function initSearch(){
-	alert("Hello World");
+// function initSearch(){
+// 	alert("Hello World");
 
-	// get all the information you need to run the search
-	var yourName = prompt("Who do you want to search for?");
+// 	// get all the information you need to run the search
+// 	var yourName = prompt("Who do you want to search for?");
 
-	// then pass that info to the respective function.
-	var result = getPersonInfo("J", "T")
+// 	// then pass that info to the respective function.
+// 	var result = getPersonInfo("J", "T")
 
-	// once the search is done, pass the results to the responder function
-	responder(result);
-}
+// 	// once the search is done, pass the results to the responder function
+// 	responder(result);
+// }
 
-function responder(results){
-	// results may be a list of strings, an object, or a single string. 
-	alert(results);
-}
+// function responder(results){
+// 	// results may be a list of strings, an object, or a single string. 
+// 	alert(results);
+// }
 
-function getPersonInfo(firstname, lastname){
-	var result = "This will be the information for whoever you searched for";
-	// look up person's information
-	return result;
-}
+// function getPersonInfo(firstname, lastname){
+// 	var result = "This will be the information for whoever you searched for";
+// 	// look up person's information
+// 	return result;
+// }
 
-function getFamily(){
-	// return list of names of immediate family members
-}
+// function getFamily(){
+// 	// return list of names of immediate family members
+// }
 
-// there will be much more here, and some of the code above will certainly change
+// // there will be much more here, and some of the code above will certainly change
 
-initSearch();
-// window.close(); // exit window as the end of the session -- you may remove this
+// initSearch();
+// // window.close(); // exit window as the end of the session -- you may remove this
 
 
