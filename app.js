@@ -283,38 +283,49 @@ function initSearch(){
 		while (lastName == ""){
 			lastName = prompt("What is their last name?");
 		}
-		while (lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4"){
+		while (!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
 			lookingFor=prompt("Are you looking for their info (1), family (2) descendents (3) or next of kin (4).  (Please type in a number between 1-4)");
 
-}
-//switch(lookingFor) each is a function call
-//lookingForInfo(firstName, LastName);
+		}
+	//switch(lookingFor) each is a function call
+	//lookingForInfo(firstName, LastName);
+	//lookingForFamily ()
 	}else{
-		while(characteristic != ""){
-			characteristic = prompt("Enter the characteristic of the person you are looking for");
-			//ask all 5 characteristics up front then filter it
-			//need switch case getFamily(firstName, lastName) getDescendants(firstName, lastName) getKin(firstName, LastName);
+		for (var i=0; i < 5; i++) {
+			while(characteristic == ""){
+
+				characteristic = prompt("Enter the characteristic of the person you are looking for");
+
+				//ask all 5 characteristics up front then filter it
+				//need switch case getFamily(firstName, lastName) getDescendants(firstName, lastName) getKin(firstName, LastName);
+				
+				//begin filtering characteristics
+			}
 			characteristics.push(characteristic);
-			//begin filtering characteristics
+			characteristic = "";
 		}
 	}
+
 }
 
 		function getInfo(firstName, lastName){
-			var results = "";
+			var getInfoResults = "";
 			responder(results);
 		}
 		function getFamily(firstName, lastName){
-			
+			var getFamilyResults = "";
+
 
 		}
 		function getDescendants(firstName, lastName){
+			var getDescendantsResults = "";
 
 		}
 		function getKin(firstName, lastName){
-
+			var getKinResults = "";
 		}
 		function filterPeople(characteristics){
+			var filterPeopleResults = "";
 
 		}function responder(results){
 			alert(results);
@@ -479,7 +490,7 @@ printAllToConsole(dataObject);
 
 // // there will be much more here, and some of the code above will certainly change
 
-// initSearch();
+initSearch();
 // // window.close(); // exit window as the end of the session -- you may remove this
 
 
