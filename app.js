@@ -306,8 +306,16 @@ function initSearch(){
             //filter? can we use a for loop here with a filter?
         }switch(lookingFor){
             case "1":
+                var infoResults = getInfo(firstName, lastName);
+                var allInfo = " ID: " + infoResults[0]['id'] + " First Name: " + infoResults[0]['firstName'] + " Last Name: " + 
+                infoResults[0]['lastName'] + " Gender: " + infoResults[0]['gender'] + " Date of Birth: " + infoResults[0]['dob'] + 
+                " Height: " + infoResults[0]['height'] + " Weight: " + infoResults[0]['weight'] + " Eye Color: " + infoResults[0]['eyeColor'] +
+                " Occupation: " + infoResults[0]['occupation'] + " Parents: " + infoResults[0]['parents'] + " Current Spouse: " +
+                 infoResults[0]['currentSpouse'];
+                alert(allInfo);
+                break;
             case "2": 
-                var familyResults = getFamily(firstName, lastName);
+                 var familyResults = getFamily(firstName, lastName);
 
                 alert(familyResults[0]['firstName'],['lastName']);
 
@@ -322,8 +330,8 @@ function initSearch(){
         return;
     }
 
-    function getFamily(firstName, lastName) {
 
+ function getInfo(firstName, lastName) {
 
     return dataObject.filter(function (user) {
         if (user.firstName == firstName && user.lastName == lastName){
@@ -332,6 +340,18 @@ function initSearch(){
     });
 }
 
+    function getFamily(firstName, lastName) {
+
+    return dataObject.filter(function (user) {
+        if (user.firstName == firstName && user.lastName == lastName){
+            return(user);
+        }
+    });
+}
+
+
+
+   
 
     for (var i=0; i < 5; i++) {
         while(characteristic == ""){
