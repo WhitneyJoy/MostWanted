@@ -308,7 +308,8 @@ function initSearch(){
             case "1":
             case "2": 
                 var familyResults = getFamily(firstName, lastName);
-                alert(familyResults[0]['firstName', 'lastName']);
+                var firstAndLastName = familyResults[0]['firstName'] + " " + familyResults[0]['lastName'];
+                alert(firstAndLastName);
                 break;
             case "3":
             case "4":
