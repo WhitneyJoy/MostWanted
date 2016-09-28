@@ -322,4 +322,81 @@ function initSearch(){
 
 
     return dataObject.filter(function (user) {
+        if (user.firstName == firstName && user.lastName == lastName){
+            return(user);
+        }
+    });
+}
+
+
+    for (var i=0; i < 5; i++) {
+        while(characteristic == ""){
+
+            characteristic = prompt("Enter the characteristic of the person you are looking for");
+
+            //ask all 5 characteristics up front then filter it
+            //need switch case getFamily(firstName, lastName) getDescendants(firstName, lastName) getKin(firstName, LastName);
+
+            //begin filtering characteristics
+        }
+        characteristics.push(characteristic);
+        characteristic = "";
+    }
+}
+
+
+
+function getInfo(firstName, lastName){
+    var getInfoResults = "";
+    responder(results);
+}
+
+
+function getDescendants(firstName, lastName){
+    var getDescendantsResults = "";
+
+}
+function getKin(firstName, lastName){
+    var getKinResults = "";
+}
+function filterPeople(characteristics){
+    var filterPeopleResults = "";
+
+}function responder(results){
+    alert(results);
+}
+
+initSearch();
+
+
+// function getGender(){
+//     var yourSpouse = prompt("Do you know their current spouse?");
+//     var yourGender = prompt("Do you know their gender?");
+//     if (yourGender.length > 0) {
+//       if (yourGender === 'male' || yourGender === 'female' || yourGender === 'unknown') {
+//             return true;
+//       } else {
+//             return false;
+//       }
+//     } else {
+//       return false;
+//     }
+// };
+// getGender();
+
+
+
+
+//     var yourBirth = prompt("Do you know their date of birth?");
+//     var yourHeight = prompt("Do you know their height?");
+//     var yourWeight = prompt("Do you know their weight?");
+//     var yourEyeColor = prompt("Do you know their eye color?");
+//     var yourOccupation = prompt("Do you know their occupation?");
+//     var yourParents = prompt("Do you know their parents?");
+
+
+
+
+
+
        
