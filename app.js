@@ -287,6 +287,7 @@ function initSearch(){
     var answer = "";
     var firstName = "";
     var lastName = "";
+    var personalId = "";
     var lookingFor = "";
     var characteristic = "";
     var characteristics = [];
@@ -302,7 +303,7 @@ function initSearch(){
             lastName = prompt ("What's their last name?");
         }
         while(!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
-            lookingFor=prompt("Are you looking for their info (1), family (2), descendants (3), or next of kin (4). (Please type a number between 1-4)");
+            lookingFor=prompt("Are you looking for their (1) Info, (2) Descendants, (3) Family, or (4) Next of Kin. (Please type a number between 1-4)");
             //filter? can we use a for loop here with a filter?
         }switch(lookingFor){
             case "1":
@@ -315,14 +316,19 @@ function initSearch(){
                 alert(allInfo);
                 break;
             case "2": 
-                 var familyResults = getFamily(firstName, lastName);
+                var descendantResults = getDescendant(firstName, lastName);
+                var personalId = " ID: " + descendantResults[0].id;
+                alert(descendantResults);
+                break;
+            case "3":
+                var familyResults = getFamily(firstName, lastName);
 
                 alert(familyResults[0]['firstName'],['lastName']);
 
                 var firstAndLastName = familyResults[0]['firstName'] + " " + familyResults[0]['lastName'];
                 alert(firstAndLastName);
                 break;
-            case "3":
+
             case "4":
         }
     }else{
@@ -332,7 +338,6 @@ function initSearch(){
 
 
  function getInfo(firstName, lastName) {
-
     return dataObject.filter(function (user) {
         if (user.firstName == firstName && user.lastName == lastName){
             return(user);
@@ -340,14 +345,22 @@ function initSearch(){
     });
 }
 
-    function getFamily(firstName, lastName) {
-
+function getDescendant(firstName, lastName){
     return dataObject.filter(function (user) {
         if (user.firstName == firstName && user.lastName == lastName){
             return(user);
         }
     });
 }
+
+function getFamily(firstName, lastName) {
+    return dataObject.filter(function (user) {
+        if (user.firstName == firstName && user.lastName == lastName){
+            return(user);
+        }
+    });
+}
+
 
 
 
@@ -370,16 +383,7 @@ function initSearch(){
 
 
 
-function getInfo(firstName, lastName){
-    var getInfoResults = "";
-    responder(results);
-}
 
-
-function getDescendants(firstName, lastName){
-    var getDescendantsResults = "";
-
-}
 function getKin(firstName, lastName){
     var getKinResults = "";
 }
