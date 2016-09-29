@@ -337,12 +337,12 @@ function initSearch(){
             break;
             case "3":
                 var infoResults = getInfo (firstName, lastName);
-                var parentalUnit = infoResults[0];
-                if (parentalUnit === undefined) {
+                var personOfInterest = infoResults[0];
+                if (personOfInterest === undefined) {
                     alert("User not found.");
                     return;
                 }
-                var parentsNameResults = getParents(parentalUnit.id);
+                var parentsNameResults = getParents(personOfInterest.id);
                 if (parentsNameResults.length === 0) {
                     alert("There are no parents");
                     return;
@@ -352,6 +352,19 @@ function initSearch(){
                 parentsOutput+= " ID: " + parentsNameResults[i].id + " First Name: " + parentsNameResults[i].firstName + " Last Name: " + parentsNameResults[i].lastName + "\r\n";
                 }
                 alert(parentsOutput); 
+
+
+                if (personOfInterest.currentSpouse){
+                    var spouseNameResults = getSpouse(personOfInterest.currentSpouse);
+                } else {
+                    alert("There is no spouse");
+                    return;
+                }
+                var spouseOutput = "";
+                for(var i = 0; i < spouseNameResults.length; i++) {
+                spouseOutput+= " ID: " + spouseNameResults[i].id + " First Name: " + spouseNameResults[i].firstName + " Last Name: " + spouseNameResults[i].lastName + "\r\n";
+                }
+                alert(spouseOutput);
 
 
             break;
@@ -401,7 +414,7 @@ function getDescendants(id){
 
 function getParents(id){
     var motherAndFather = [];
-    console.log("checking for id" + parentalUnit.id);
+    console.log("checking for id" + personOfInterest.id);
 
     for (var i = 0; i < dataObject.length; i++) {
          var user = dataObject[i];
@@ -422,13 +435,25 @@ function getParents(id){
     return motherAndFather;
 }
 
+
+function getSpouse(spouseId){
+    if(spouseId){
+
+        for (var i = 0; i < dataObject.length; i++) {
+            if (spouseId == dataObject[i].id){
+                console.log (dataObject[i]);
+                return dataObject[i];
+
+            }
+        }
+    }
+}
+
+
 function getSiblings(firstName, lastName){
-
 }
 
-function getCurrentSpouse(firstName, lastName){
 
-}
 
 function getChildren(firstName, lastName){
 
