@@ -412,6 +412,13 @@ function getParents(id){
          }
     }
 
+    for (var j = 0; j < dataObject.length; j++) {
+        var parentSearchUser = dataObject[j];
+        if (user.parents.indexOf(parseInt(parentSearchUser.id)) > -1) {
+        motherAndFather.push(parentSearchUser)
+    }
+}
+
     console.log('MOTHER AND FATHER');
     console.log(motherAndFather);
     return motherAndFather;
