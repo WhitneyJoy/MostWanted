@@ -314,21 +314,36 @@ function initSearch(){
                 " Occupation: " + infoResults[0]['occupation'] + " Parents: " + infoResults[0]['parents'] + " Current Spouse: " +
                  infoResults[0]['currentSpouse'];
                 alert(allInfo);
-                break;
+            break;
             case "2": 
-                var descendantResults = getDescendant(firstName, lastName);
-                var personalId = " ID: " + descendantResults[0].id;
-                alert(descendantResults);
-                break;
+                var infoResults = getInfo(firstName, lastName);
+                //TODO ensure there IS infoResults[0] (what if none are returned?)
+                var parent = infoResults[0];
+                if (parent == undefined) {
+                    alert('User not found.');
+                    return;
+                }
+                var descendantResults = getDescendants(parent.id);
+                if (descendantResults.length === 0) {
+                    alert("There are no descendants");
+                    return;
+                }
+
+                var output = "";
+                for(var i = 0; i < descendantResults.length; i++) {
+                    var descendant = descendantResults[i];
+                    // var personalId = " ID: " + descendantResults[0]['id']  + " First Name: " + descendantResults[0]['firstName'] + " Last Name: " + descendantResults[0]['lastName'];
+                    var personalId = " ID: " + descendant.id  + " First Name: " + descendant.firstName + " Last Name: " + descendant.lastName;
+                    output+= personalId + "\r\n";
+                }
+                alert(output);
+            break;
             case "3":
                 var familyResults = getFamily(firstName, lastName);
-
                 alert(familyResults[0]['firstName'],['lastName']);
-
                 var firstAndLastName = familyResults[0]['firstName'] + " " + familyResults[0]['lastName'];
                 alert(firstAndLastName);
-                break;
-
+            break;
             case "4":
         }
     }else{
@@ -338,19 +353,39 @@ function initSearch(){
 
 
  function getInfo(firstName, lastName) {
-    return dataObject.filter(function (user) {
-        if (user.firstName == firstName && user.lastName == lastName){
-            return(user);
+    var matches = [];
+    for (var i = 0; i < dataObject.length; i++) {
+        var user = dataObject[i];
+        if (user.firstName.toLowerCase() == firstName.toLowerCase() && user.lastName.toLowerCase() == lastName) {
+            matches.push(user);
         }
-    });
+    }
+    return matches;
 }
 
-function getDescendant(firstName, lastName){
-    return dataObject.filter(function (user) {
-        if (user.firstName == firstName && user.lastName == lastName){
-            return(user);
+function getDescendants(id){
+    var descendants = [];
+    console.log("checking for descendant of " + id);
+
+    for (var i = 0; i < dataObject.length; i++) {
+        //if the user's parents array contains id,
+        //add this user to the results array,
+        var user = dataObject[i];
+        //-1 means what they entered doesn't exist in the array so this is saying
+        //return only what exists in the array
+        if (user.parents.indexOf(parseInt(id)) > -1) {
+            descendants.push(user);
+            var userIdToCheck = user.id;
+            //TODO then retrieve THAT user's descendants
+            var childDescendants = getDescendants(userIdToCheck);
+            //TODO concat childDescendants into descendants
+            descendants = descendants.concat(childDescendants);
         }
-    });
+    }
+
+    console.log('DESCENDANTS');
+    console.log(descendants);
+    return descendants;
 }
 
 function getFamily(firstName, lastName) {
