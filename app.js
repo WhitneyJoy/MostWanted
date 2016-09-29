@@ -317,7 +317,6 @@ function initSearch(){
             break;
             case "2": 
                 var infoResults = getInfo(firstName, lastName);
-                //TODO ensure there IS infoResults[0] (what if none are returned?)
                 var parent = infoResults[0];
                 if (parent == undefined) {
                     alert('User not found.');
@@ -331,13 +330,30 @@ function initSearch(){
                 var output = "";
                 for(var i = 0; i < descendantResults.length; i++) {
                     var descendant = descendantResults[i];
-                    // var personalId = " ID: " + descendantResults[0]['id']  + " First Name: " + descendantResults[0]['firstName'] + " Last Name: " + descendantResults[0]['lastName'];
                     var personalId = " ID: " + descendant.id  + " First Name: " + descendant.firstName + " Last Name: " + descendant.lastName;
                     output+= personalId + "\r\n";
                 }
                 alert(output);
             break;
             case "3":
+                var infoResults = getInfo (firstName, lastName);
+                var parentalUnit = infoResults[0];
+                if (parentalUnit = undefined) {
+                    alert("User not found.");
+                    return;
+                }
+                var parentsNameResults = getParents(parentalUnit.id);
+                if (parentsNameResults.length === 0) {
+                    alert("There are no parents");
+                    return;
+                }
+                var parentsOutput = "";
+                for(var i = 0; i < parentsNameResults.length; i++) {
+                var parentsName = parentsNameResults[i];
+                var parentsNameResults = " ID: " + parentsName.id + " First Name: " + parentsName.firstname + " Last Name: " + parentsName.lastName;
+                parentsOutput+= parentsNameResults + "\r\n";
+                }
+                alert(parentsOutput); 
             break;
             case "4":
         }
@@ -383,6 +399,21 @@ function getDescendants(id){
     return descendants;
 }
 
+function getParents(firstName, lastName){
+    var motherAndFather = [];
+    console.log("checking for id" + id);
+
+    for (var i = 0; i < dataObject.length; i++) {
+         var user = dataObject [i];
+         if (user.parents.indexOf(parseInt(id)) > - 1) {
+            motherAndFather.push(user);
+         }
+    }
+
+    console.log('MOTHER AND FATHER');
+    console.log(motherAndFather);
+    return motherAndFather;
+}
 
 
 
@@ -445,8 +476,3 @@ initSearch();
 //     var yourParents = prompt("Do you know their parents?");
 
 
-
-
-
-
-       
