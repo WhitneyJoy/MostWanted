@@ -401,14 +401,14 @@ function getDescendants(id){
     return descendants;
 }
 
-function getParents(firstName, lastName){
+function getParents(id){
     var motherAndFather = [];
     console.log("checking for id" + parentalUnit.id);
 
     for (var i = 0; i < dataObject.length; i++) {
-         var user = dataObject [i];
-         if (user.parents.indexOf(parseInt(parentalUnit.id)) > - 1) {
-            motherAndFather.push(user);
+         var user = dataObject[i];
+         if (user.parents && user.id == id) {
+            motherAndFather = user.parents;
          }
     }
 
