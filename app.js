@@ -348,10 +348,8 @@ function initSearch(){
                     return;
                 }
                 var parentsOutput = "";
-                for(var i = 0; i < parentsNameResults.length; i++) {
-                var parentsName = parentsNameResults[i];
-                var parentsNameResults = " ID: " + parentsName.id + " First Name: " + parentsName.firstname + " Last Name: " + parentsName.lastName;
-                parentsOutput+= parentsNameResults + "\r\n";
+                for(var i = 2; i < parentsNameResults.length; i++) {
+                parentsOutput+= " ID: " + parentsNameResults[i].id + " First Name: " + parentsNameResults[i].firstName + " Last Name: " + parentsNameResults[i].lastName + "\r\n";
                 }
                 alert(parentsOutput); 
 
