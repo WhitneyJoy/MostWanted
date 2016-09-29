@@ -338,7 +338,7 @@ function initSearch(){
             case "3":
                 var infoResults = getInfo (firstName, lastName);
                 var parentalUnit = infoResults[0];
-                if (parentalUnit = undefined) {
+                if (parentalUnit === undefined) {
                     alert("User not found.");
                     return;
                 }
@@ -354,6 +354,8 @@ function initSearch(){
                 parentsOutput+= parentsNameResults + "\r\n";
                 }
                 alert(parentsOutput); 
+
+
             break;
             case "4":
         }
@@ -401,11 +403,11 @@ function getDescendants(id){
 
 function getParents(firstName, lastName){
     var motherAndFather = [];
-    console.log("checking for id" + id);
+    console.log("checking for id" + parentalUnit.id);
 
     for (var i = 0; i < dataObject.length; i++) {
          var user = dataObject [i];
-         if (user.parents.indexOf(parseInt(id)) > - 1) {
+         if (user.parents.indexOf(parseInt(parentalUnit.id)) > - 1) {
             motherAndFather.push(user);
          }
     }
@@ -415,6 +417,17 @@ function getParents(firstName, lastName){
     return motherAndFather;
 }
 
+function getSiblings(firstName, lastName){
+
+}
+
+function getCurrentSpouse(firstName, lastName){
+
+}
+
+function getChildren(firstName, lastName){
+
+}
 
 
    
