@@ -339,10 +339,27 @@ function initSearch(){
                 alert(output);
             break;
             case "3":
-                var familyResults = getFamily(firstName, lastName);
-                alert(familyResults[0]['firstName'],['lastName']);
-                var firstAndLastName = familyResults[0]['firstName'] + " " + familyResults[0]['lastName'];
-                alert(firstAndLastName);
+                var infoResults = getInfo(firstName, lastName);
+                //TODO ensure there IS infoResults[0] (what if none are returned?)
+                var spouse = infoResults[0];
+                if (spouse == undefined) {
+                    alert('User not found.');
+                    return;
+                }
+                var spouseResults = getFamily(spouse.id);
+                if (descendantResults.length === 0) {
+                    alert("No current spouse");
+                    return;
+                }
+
+                var familyOutput = "";
+                for(var i = 0; i < spouse.length; i++) {
+                    var family = spouceResults[i];
+                    // var personalId = " ID: " + descendantResults[0]['id']  + " First Name: " + descendantResults[0]['firstName'] + " Last Name: " + descendantResults[0]['lastName'];
+                    var spouseId = " ID: " + spouse.id  + " First Name: " + descendant.firstName + " Last Name: " + descendant.lastName;
+                    output+= personalId + "\r\n";
+                }
+                alert(familyOutput);
             break;
             case "4":
         }
@@ -389,13 +406,29 @@ function getDescendants(id){
 }
 
 function getFamily(firstName, lastName) {
-    return dataObject.filter(function (user) {
-        if (user.firstName == firstName && user.lastName == lastName){
-            return(user);
-        }
-    });
-}
+    var immediateFamily = [];
+    console.log("checking for descendant of " + id);
 
+    for (var i = 0; i < dataObject.length; i++) {
+        //if the user's parents array contains id,
+        //add this user to the results array,
+        var userSpouse = dataObject[i];
+        //-1 means what they entered doesn't exist in the array so this is saying
+        //return only what exists in the array
+        if (userSpouse.spouse.indexOf(parseInt(id)) > -1) {
+            immediateFamily.push(userSpouse);
+            var userIdToCheck = user.id;
+            //TODO then retrieve THAT user's descendants
+            var nextSpouse = getFamily(userIdToCheck);
+            //TODO concat childDescendants into descendants
+            immediateFamily = immediateFamily.concat(nextSpouse);
+        }
+    }
+
+    console.log('Spouse');
+    console.log(immediateFamily);
+    return immediateFamily;
+}
 
 
 
