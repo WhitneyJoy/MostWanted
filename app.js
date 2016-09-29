@@ -328,7 +328,6 @@ function initSearch(){
                     alert("There are no descendants");
                     return;
                 }
-
                 var output = "";
                 for(var i = 0; i < descendantResults.length; i++) {
                     var descendant = descendantResults[i];
