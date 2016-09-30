@@ -365,8 +365,6 @@ function initSearch(){
                 spouseOutput+= " ID: " + spouseNameResults[i].id + " First Name: " + spouseNameResults[i].firstName + " Last Name: " + spouseNameResults[i].lastName + "\r\n";
                 }
                 alert(spouseOutput);
-
-
             break;
             case "4":
         }
@@ -374,8 +372,6 @@ function initSearch(){
         alert("Please come back when you have more information.");
         return;
     }
-
-
  function getInfo(firstName, lastName) {
     var matches = [];
     for (var i = 0; i < dataObject.length; i++) {
@@ -386,11 +382,9 @@ function initSearch(){
     }
     return matches;
 }
-
 function getDescendants(id){
     var descendants = [];
     console.log("checking for descendant of " + id);
-
     for (var i = 0; i < dataObject.length; i++) {
         //if the user's parents array contains id,
         //add this user to the results array,
@@ -406,12 +400,10 @@ function getDescendants(id){
             descendants = descendants.concat(childDescendants);
         }
     }
-
     console.log('DESCENDANTS');
     console.log(descendants);
     return descendants;
 }
-
 function getParents(id){
     var motherAndFather = [];
     console.log("checking for id" + personOfInterest.id);
@@ -422,20 +414,16 @@ function getParents(id){
             motherAndFather = user.parents;
          }
     }
-
     for (var j = 0; j < dataObject.length; j++) {
         var parentSearchUser = dataObject[j];
         if (user.parents.indexOf(parseInt(parentSearchUser.id)) > -1) {
         motherAndFather.push(parentSearchUser)
     }
 }
-
     console.log('MOTHER AND FATHER');
     console.log(motherAndFather);
     return motherAndFather;
 }
-
-
 function getSpouse(spouseId){
     if(spouseId){
 
@@ -451,6 +439,7 @@ function getSpouse(spouseId){
 
 
 function getSiblings(firstName, lastName){
+    
 }
 
 
