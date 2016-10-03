@@ -427,10 +427,10 @@ function getParents(id){
 function getSpouse(spouseId){
     if(spouseId){
 
-    for (var i = 0; i < dataObject.length; i++) {
-        if (spouseId == dataObject[i].id){
-        console.log (dataObject[i]);
-        return dataObject[i];
+        for (var i = 0; i < dataObject.length; i++) {
+            if (spouseId == dataObject[i].id){
+                console.log (dataObject[i]);
+                return dataObject[i];
 
             }
         }
