@@ -50,11 +50,14 @@ a {
 
 }
 
+div{
+  margin-bottom: 2%;
+}
 
 
-
-
-
+.labelForm{
+  margin-right:20px;
+}
 
 
 @media only screen and (max-width : 600px) {

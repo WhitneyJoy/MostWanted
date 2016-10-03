@@ -336,7 +336,7 @@ function initSearch(){
                 alert(output);
             break;
             case "3":
-                var infoResults = getInfo (firstName, lastName);
+                var infoResults = getInfo(firstName, lastName);
                 var personOfInterest = infoResults[0];
                 if (personOfInterest === undefined) {
                     alert("User not found.");
@@ -376,15 +376,26 @@ function initSearch(){
         alert("Please come back when you have more information.");
         return;
     }
+}
+
 
 
  function getInfoFromArray(data){
-    var getInfo();
-    alert ("Spouse first name.");
+    // var getInfo();
+    if (spouseOutput ===undefined){
+        alert("nothing found");
+    }
+    else {
+        for(var i = 0; i < dataObject.length; i++){
+          alert("Spouse first name.");
+
+        }
+    };
+
     // var spousResults = getInfo()
     //     alert (spouseNameResults);
 
- }
+
 
  function getInfo(firstName, lastName) {
     var matches = [];
@@ -482,8 +493,8 @@ function getChildren(firstName, lastName){
         characteristics.push(characteristic);
         characteristic = "";
     }
-}
 
+}
 
 
 
