@@ -354,17 +354,21 @@ function initSearch(){
                 alert(parentsOutput); 
 
 
+
+
+                var spouseOutput = "";
+                for(var i = 0; i < spouseNameResults.length; i++) {
+                spouseOutput+= " ID: " + spouseNameResults[i].id + " First Name: " + spouseNameResults[i].firstName + " Last Name: " + spouseNameResults[i].lastName + "\r\n";
+                }
+                alert(spouseOutput);
+
                 if (personOfInterest.currentSpouse){
                     var spouseNameResults = getSpouse(personOfInterest.currentSpouse);
                 } else {
                     alert("There is no spouse");
                     return;
                 }
-                var spouseOutput = "";
-                for(var i = 0; i < spouseNameResults.length; i++) {
-                spouseOutput+= " ID: " + spouseNameResults[i].id + " First Name: " + spouseNameResults[i].firstName + " Last Name: " + spouseNameResults[i].lastName + "\r\n";
-                }
-                alert(spouseOutput);
+                
             break;
             case "4":
         }
@@ -376,7 +380,7 @@ function initSearch(){
     var matches = [];
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
-        if (user.firstName.toLowerCase() == firstName.toLowerCase() && user.lastName.toLowerCase() == lastName.toLowerCase()) {
+        if (user.firstName.toLowerCase() === firstName.toLowerCase() && user.lastName.toLowerCase() === lastName.toLowerCase()) {
             matches.push(user);
         }
     }
@@ -413,13 +417,16 @@ function getParents(id){
          if (user.parents && user.id == id) {
             motherAndFather = user.parents;
          }
+        var parentsNameResults = getInfo(user.parents);
+                    alert(parentsNameResults);
     }
-    for (var j = 0; j < dataObject.length; j++) {
-        var parentSearchUser = dataObject[j];
-        if (user.parents.indexOf(parseInt(parentSearchUser.id)) > -1) {
-        motherAndFather.push(parentSearchUser)
-    }
-}
+    // for (var j = 0; j < dataObject.length; j++) {
+    //     var parentSearchUser = dataObject[j];
+    //     if (user.parents.indexOf(parseInt(parentSearchUser.id)) > -1) {
+    //     motherAndFather.push(parentSearchUser)
+    //     }
+    // }
+
     console.log('MOTHER AND FATHER');
     console.log(motherAndFather);
     return motherAndFather;
