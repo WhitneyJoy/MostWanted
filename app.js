@@ -382,6 +382,7 @@ function initSearch(){
         var user = dataObject[i];
         if (user.firstName.toLowerCase() === firstName.toLowerCase() && user.lastName.toLowerCase() === lastName.toLowerCase()) {
             matches.push(user);
+            console.log (firstName.toLowerCase());
         }
     }
     return matches;
