@@ -379,7 +379,10 @@ function initSearch(){
 
 
  function getInfoFromArray(data){
-    
+    var getInfo();
+    alert ("Spouse first name.");
+    // var spousResults = getInfo()
+    //     alert (spouseNameResults);
 
  }
 
