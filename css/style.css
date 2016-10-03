@@ -39,6 +39,23 @@ p {
   }
 }
 
+a {
+  color:white;
+}
+
+#form{
+  margin:0 auto;
+  text-align:center;
+  width:100%;
+
+}
+
+
+
+
+
+
+
 @media only screen and (max-width : 600px) {
   #index-banner .section {
     top: 0;
@@ -54,4 +71,8 @@ p {
 
 footer.page-footer {
   margin: 0;
+}
+
+.buttonLetteringColor{
+  color:white;
 }
