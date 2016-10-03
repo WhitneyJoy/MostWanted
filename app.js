@@ -376,6 +376,13 @@ function initSearch(){
         alert("Please come back when you have more information.");
         return;
     }
+
+
+ function getInfoFromArray(data){
+    
+
+ }
+
  function getInfo(firstName, lastName) {
     var matches = [];
     for (var i = 0; i < dataObject.length; i++) {
