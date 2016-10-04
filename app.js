@@ -370,7 +370,7 @@ function initSearch(){
                  if (personOfInterest.parents != null){
                     var siblings = getSiblings(personOfInterest.parents);
                     console.log(siblings);
-                    alert(personOfInterest.firstName) + " " + (personOfInterest.lastName);
+                    alert(firstName.user) + " " + (lastName.user);
                 } else {
                     alert("There are no siblings");
                     return;
