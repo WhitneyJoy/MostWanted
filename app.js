@@ -8,7 +8,7 @@ var dataObject = [
         "weight": 175,
         "eyeColor": "brown",
         "occupation": "programmer",
-        "pj,
+        "parents": [],
         "currentSpouse": "401222887",
     },
     { "id": "401222887",
