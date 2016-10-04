@@ -481,7 +481,7 @@ function getSpouse(spouseId){
 function getSiblings(parentsNameResults){
     var callback = function(user) {
         for (var i = 0; i < user.parents.length; i++) {
-            // var id = parentIds[i];
+            var id = parentIds[i];
             if (user.parents.indexOf(id) > -1) {
                 return true;
             }
