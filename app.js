@@ -8,7 +8,7 @@ var dataObject = [
         "weight": 175,
         "eyeColor": "brown",
         "occupation": "programmer",
-        "parents": [],
+        "pj,
         "currentSpouse": "401222887",
     },
     { "id": "401222887",
@@ -364,13 +364,12 @@ function initSearch(){
 
                 } else {
                     alert("There is no spouse");
-                    return;
                 }
 
-                 if (personOfInterest.parents != null){
+                 if (personOfInterest.parents.length > 0){
                     var siblings = getSiblings(personOfInterest.parents);
                     console.log(siblings);
-                    alert(firstName.siblings) + " " + (lastName.siblings);
+                    alert(siblings[0].firstName);
                 } else {
                     alert("There are no siblings");
                     return;
@@ -478,7 +477,8 @@ function getSpouse(spouseId){
     }
 }
 
-function getSiblings(parentsNameResults){
+function getSiblings(parentIds){
+
     var callback = function(user) {
         for (var i = 0; i < user.parents.length; i++) {
             var id = parentIds[i];
