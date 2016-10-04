@@ -370,7 +370,7 @@ function initSearch(){
                  if (personOfInterest.parents != null){
                     var siblings = getSiblings(personOfInterest.parents);
                     console.log(siblings);
-                    alert(firstName.user) + " " + (lastName.user);
+                    alert(firstName.siblings) + " " + (lastName.siblings);
                 } else {
                     alert("There are no siblings");
                     return;
@@ -479,27 +479,19 @@ function getSpouse(spouseId){
 }
 
 function getSiblings(parentsNameResults){
-    var parentIds = [];
-    var callback = function (user) {
-        for (var i = 0; i < parentIds.length; i++) {
-            var id = parentIds[i];
+    var callback = function(user) {
+        for (var i = 0; i < user.parents.length; i++) {
+            // var id = parentIds[i];
             if (user.parents.indexOf(id) > -1) {
                 return true;
             }
         }
         return false;
-        alert ("There are no siblings.");
     };
 
-    var siblings= dataObject.filter(callback);
-    // if(parentsNameResults){
-    //     for (var i = 0; i < dataObject.length; i++) {
-    //         if (parentsNameResults === dataObject[i].id){
-    //             console.log (dataObject[i]);
-           
-//             }
-//         }
-//     }
+    var siblings = dataObject.filter(callback);
+    
+    return siblings;
 }
 
 function getChildren(firstName, lastName){
