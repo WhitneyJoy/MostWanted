@@ -471,7 +471,7 @@ function getSiblings(parentIds){
 }
 
 function getChildren(firstName, lastName){
-
+	
 }
 
 
