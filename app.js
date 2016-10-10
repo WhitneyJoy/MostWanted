@@ -292,6 +292,9 @@ function initSearch(){
     var characteristic = "";
     var characteristics = [];
 
+    //function for the name
+    //function for the traits
+
     while (!(answer == "yes" || answer == "no")){
         answer = prompt("Do you know who you are looking for? (yes or no)");
     }
@@ -352,7 +355,6 @@ function initSearch(){
                     var callback = function(parent){
                         parentsOutput += " Parents ID " + parent.id + " Parents First Name " + parent.firstName + " Parents Last Name " + parent.lastName + "\r\n";
                     }
-                    
                     parentsNameResults.forEach(callback);
                     alert(parentsOutput); 
                 }
@@ -374,17 +376,10 @@ function initSearch(){
                     alert("There are no siblings");
                     return;
                 }
-
-                //TODO grab children will require a for loop function
-                //TODO to grab children, we need to grab users whose parents array
-                //     contains our person of interest's id
-
-                //TODO grab siblings (will require a for loop function)
-                //TODO to grab the siblings, find other users that have 
-                //     the same parents
-                
             break;
             case "4":
+
+
             break;
         }
 
@@ -392,22 +387,6 @@ function initSearch(){
         alert("Please come back when you have more information.");
         return;
     }
-
-    //TODO init characteristics search
-    //This code might need to be moved somewhere else instead
-    // for (var i=0; i < 5; i++) {
-    //     while(characteristic == ""){
-    // 
-    //         characteristic = prompt("Enter the characteristic of the person you are looking for");
-    // 
-    //         //ask all 5 characteristics up front then filter it
-    //         //need switch case getFamily(firstName, lastName) getDescendants(firstName, lastName) getKin(firstName, LastName);
-    // 
-    //         //begin filtering characteristics
-    //     }
-    //     characteristics.push(characteristic);
-    //     characteristic = "";
-    // }
 }
 
 function getInfo(firstName, lastName) {
@@ -422,7 +401,7 @@ function getInfo(firstName, lastName) {
     return matches;
 }
 
-function getDescendants(id){
+function getDescendants(id, descendants = []){
     var descendants = [];
     console.log("checking for descendant of " + id);
     for (var i = 0; i < dataObject.length; i++) {
@@ -478,7 +457,6 @@ function getSpouse(spouseId){
 }
 
 function getSiblings(parentIds){
-
     var callback = function(user) {
         for (var i = 0; i < user.parents.length; i++) {
             var id = parentIds[i];
@@ -488,15 +466,15 @@ function getSiblings(parentIds){
         }
         return false;
     };
-
     var siblings = dataObject.filter(callback);
-    
     return siblings;
 }
 
 function getChildren(firstName, lastName){
 
 }
+
+
 function getKin(firstName, lastName){
     var getKinResults = "";
 }
@@ -510,27 +488,33 @@ function responder(results){
 initSearch();
 
 
-// function getGender(){
-//     var yourSpouse = prompt("Do you know their current spouse?");
-//     var yourGender = prompt("Do you know their gender?");
-//     if (yourGender.length > 0) {
-//       if (yourGender === 'male' || yourGender === 'female' || yourGender === 'unknown') {
-//             return true;
-//       } else {
-//             return false;
-//       }
-//     } else {
-//       return false;
-//     }
-// };
-// getGender();
-
-
-
-
 //     var yourBirth = prompt("Do you know their date of birth?");
 //     var yourHeight = prompt("Do you know their height?");
 //     var yourWeight = prompt("Do you know their weight?");
 //     var yourEyeColor = prompt("Do you know their eye color?");
 //     var yourOccupation = prompt("Do you know their occupation?");
 //     var yourParents = prompt("Do you know their parents?");
+
+
+
+
+//to search traits use INPUT document.getElementbyId("eyeColor").value 
+//save into a variable 
+//recursion is when a function calls itself
+//Next of kin is returning one person(oldest)
+//function with an else/if statement- starting with children. var for oldest person 
+//and var for date (getFullYear in JS)
+//arrays are positions and objects are keys
+//function to validate traits- if it returns a true value for that object it gets passed into a new array
+//that's a filter for traits 
+
+
+
+
+
+
+
+
+
+
+
