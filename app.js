@@ -467,12 +467,19 @@ function getSiblings(parentIds){
         return false;
     };
     var siblings = dataObject.filter(callback);
-    return siblings;
+    alert(siblings);
 }
 
-function getChildren(firstName, lastName){
-	
-}
+
+// function getChildren(parentIdResults){
+//     for(var i = 0; i <dataObject.length; i++)
+//     var idToNumber = parseInt(idResults, 10);
+//     var firstParent = dataObject[i].parents[0];
+//     var lastParent = dataObject[i].parents[1];
+//     if(idToNumber === firstParent || idToNumber === secondParent ){
+//         alert(dataObject[i].firstName + " " + dataObject[i].lastName);
+//     }
+// }
 
 
 function getKin(firstName, lastName){
