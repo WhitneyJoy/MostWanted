@@ -378,6 +378,19 @@ function initSearch(){
                 }
             break;
             case "4":
+            	var infoResults = getInfo(firstName, lastName);
+            	var kin = infoResults[0];
+            	if (kin === undefined) {
+            		alert("Kin not found");
+            		return;
+            	}
+            	var kinResults = getOldestKin(person);
+            	console.log(kinResults);
+            	if (kinResults.length === 0) {
+            		alert("There are no kin");
+            	}
+
+
 
 
             break;
@@ -439,7 +452,6 @@ function getParents(personOfInterest){
         var id = parseInt(user.id);
         //indexOf grabs the key of the value or the position value
         return parentIds.indexOf(id) > -1;
-
     };
     return dataObject.filter(filterCallback);
 
@@ -475,9 +487,9 @@ function getSiblings(parentIds){
 //it would be looping through the objects looping in the parents key
 //which is an array to see if Dawn or the users social securtity matches in any
 //of the other objects parents array
+
 function getChildren(parentId){
     var children = [];
-
     for(var i = 0; i < dataObject.length; i++) {
         var potentialChild = dataObject[i];
         //-1 means something (in this case in the parents array) can be found or returned
@@ -508,12 +520,24 @@ function getOldestKin(person){
     });
     kin.forEach(function (member) {
     });
+    personOfInterest = personOfInterest.filter(function(person){
+  	var personsAge = 2016 - (personOfInterest.dob.slice(-4));
+})
 }
 
+function filterCharacteristics(characteristics, input= []){
+    var input = [];
 
-function filterPeople(characteristics){
-    var filterPeopleResults = "";
+characteristicsList = dataObject.filter(function(person){
+   return person.eyeColor === list.eyeColor && person.occupation === list.occupation;
+   if(list.age == " ");
+   	console.log(eyeColor);
+   	console.log(occupation);
+})
+
+
 }
+
 function responder(results){
     alert(results);
 }
