@@ -458,7 +458,7 @@ function getSpouse(spouseId){
 
 function getSiblings(parentIds){
     var callback = function(user) {
-        for (var i = 0; i < user.parents.length; i++) {
+        for (var i = 0; i < parentIds.length; i++) {
             var id = parentIds[i];
             if (user.parents.indexOf(id) > -1) {
                 return true;
@@ -470,21 +470,47 @@ function getSiblings(parentIds){
     alert(siblings);
 }
 
+//parentId in this case is the user and parents is the key in the object
+//EX: my mom Dawn Koenings the parentId would be her social security number
+//it would be looping through the objects looping in the parents key
+//which is an array to see if Dawn or the users social securtity matches in any
+//of the other objects parents array
+function getChildren(parentId){
+    var children = [];
 
-// function getChildren(parentIdResults){
-//     for(var i = 0; i <dataObject.length; i++)
-//     var idToNumber = parseInt(idResults, 10);
-//     var firstParent = dataObject[i].parents[0];
-//     var lastParent = dataObject[i].parents[1];
-//     if(idToNumber === firstParent || idToNumber === secondParent ){
-//         alert(dataObject[i].firstName + " " + dataObject[i].lastName);
-//     }
-// }
+    for(var i = 0; i < dataObject.length; i++) {
+        var potentialChild = dataObject[i];
+        //-1 means something (in this case in the parents array) can be found or returned
+        //aka if there is a something that doesn't match with what we are
+        //looking for it doesn't push into the children array (or in another EX)
+        //if there is an array var cheese = ["blue", "swiss"] and someone types in
+        //cow, it has a indexOf or index position of -1 aka it does not exist)
+        if (potentialChild.parents.indexOf(parseInt(parentId)) > -1) {
+            children.push(potentialChild);
+        }
+    }
 
-
-function getKin(firstName, lastName){
-    var getKinResults = "";
+    return children;
 }
+
+
+function getOldestKin(person){
+    var kin = [];
+    var spouse = getSpouse(parent.id);
+    kin.push(spouse);
+    var children =getChildren(person.id);
+    children.forEach(function (child) {
+        kin.push(child);
+    });
+    var parents =getParents(parents.id);
+    parents.forEach(function (parent) {
+        kin.push(parent);
+    });
+    kin.forEach(function (member) {
+    });
+}
+
+
 function filterPeople(characteristics){
     var filterPeopleResults = "";
 }
