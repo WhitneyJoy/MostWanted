@@ -378,18 +378,6 @@ function initSearch(){
                 }
             break;
             case "4":
-            	var infoResults = getInfo(firstName, lastName);
-            	var kin = infoResults[0];
-            	if (kin === undefined) {
-            		alert("Kin not found");
-            		return;
-            	}
-            	var kinResults = getOldestKin(person);
-            	console.log(kinResults);
-            	if (kinResults.length === 0) {
-            		alert("There are no kin");
-            	}
-
             break;
         }
 
@@ -449,9 +437,9 @@ function getParents(personOfInterest){
         var id = parseInt(user.id);
         //indexOf grabs the key of the value or the position value
         return parentIds.indexOf(id) > -1;
+
     };
     return dataObject.filter(filterCallback);
-
 }
 
 function getSpouse(spouseId){
@@ -467,7 +455,7 @@ function getSpouse(spouseId){
 
 function getSiblings(parentIds){
     var callback = function(user) {
-        for (var i = 0; i < parentIds.length; i++) {
+        for (var i = 0; i < user.parents.length; i++) {
             var id = parentIds[i];
             if (user.parents.indexOf(id) > -1) {
                 return true;
@@ -479,70 +467,42 @@ function getSiblings(parentIds){
     alert(siblings);
 }
 
-//parentId in this case is the user and parents is the key in the object
-//EX: my mom Dawn Koenings the parentId would be her social security number
-//it would be looping through the objects looping in the parents key
-//which is an array to see if Dawn or the users social securtity matches in any
-//of the other objects parents array
 
-function getChildren(parentId){
-    var children = [];
-    for(var i = 0; i < dataObject.length; i++) {
-        var potentialChild = dataObject[i];
-        //-1 means something (in this case in the parents array) can be found or returned
-        //aka if there is a something that doesn't match with what we are
-        //looking for it doesn't push into the children array (or in another EX)
-        //if there is an array var cheese = ["blue", "swiss"] and someone types in
-        //cow, it has a indexOf or index position of -1 aka it does not exist)
-        if (potentialChild.parents.indexOf(parseInt(parentId)) > -1) {
-            children.push(potentialChild);
-        }
-    }
+// function getChildren(parentIdResults){
+//     for(var i = 0; i <dataObject.length; i++)
+//     var idToNumber = parseInt(idResults, 10);
+//     var firstParent = dataObject[i].parents[0];
+//     var lastParent = dataObject[i].parents[1];
+//     if(idToNumber === firstParent || idToNumber === secondParent ){
+//         alert(dataObject[i].firstName + " " + dataObject[i].lastName);
+//     }
+// }
 
-    return children;
+
+// function getKin(firstName, lastName, getKinResults = []){
+//     var getKinResults = "";
+//     kin = dataObject.filter(function(getKin)){
+//         return getKin.eyeColor === list.eyeColor && getKin.occupation === list.occupation;
+//         if(!(list.age == " "))
+//     }
+// }
+function filterPeople(characteristics){
+    var filterPeopleResults = "";
 }
-
-
-// function getOldestKin(person){
-//     var kin = [];
-//     var spouse = getSpouse(parent.id);
-//     kin.push(spouse);
-//     var children =getChildren(person.id);
-//     children.forEach(function (child) {
-//         kin.push(child);
-//     });
-//     var parents =getParents(parents.id);
-//     parents.forEach(function (parent) {
-//         kin.push(parent);
-//     });
-//     kin.forEach(function (member) {
-//     });
-//     for(var i = 0; i < dataObject.length; i++);
-//         var oldest= dataObject[0];
-//         if(oldest < dataObject[i].dob.slice(-4)){
-// }
-
-//     personOfInterest = personOfInterest.filter(function(person){
-//   	var personsAge = 2016 - (personOfInterest.dob.slice(-4));
-// })
-// }
-
-// function filterCharacteristics(characteristics, input= []){
-//     var input = [];
-
-// characteristicsList = dataObject.filter(function(person){
-//    return person.eyeColor === list.eyeColor && person.occupation === list.occupation;
-//    if(list.age == " ");
-//    	console.log(eyeColor);
-//    	console.log(occupation);
-// })
-
-
-// }
-
 function responder(results){
     alert(results);
 }
+
+// var suspescts = [];
+
+// suspects = dataObject.filter(function(person){
+//    reutrn person.eyeColor === query.eyeColor && person.occupation === query.occupation;
+//    if(!(query.age == " "))
+// }
+
+// suspects = suspects.fileter(funcion(person){
+//    var personsAge = 2016 - (person.dob.slice(-4)));
+// })
 
 initSearch();
 
