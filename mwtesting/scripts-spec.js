@@ -5,7 +5,7 @@
 // });
 
 describe('function getInfo', function() {
-	it('pulls first name', function() {
+	it('finds first name', function() {
 		expect(firstName().toEqual(Billy));
 	});
 });
