@@ -390,9 +390,6 @@ function initSearch(){
             		alert("There are no kin");
             	}
 
-
-
-
             break;
         }
 
