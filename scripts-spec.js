@@ -5,7 +5,8 @@
 // });
 
 describe('function getInfo', function() {
-	it('finds first name', function() {
-		expect(firstName().toEqual(Billy));
+	it('finds Billy Bob', function() {
+		var person = getInfo("Billy","Bob");
+		expect(person[0].id).toEqual("272822514");
 	});
 });

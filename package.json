@@ -12,11 +12,9 @@
   "scripts": {
     "test": "karma start karma.conf.js"
   },
-<<<<<<< HEAD:mwtesting/package.json
-  "author": "Whitney Seybold",
-=======
+
+  
   "author": "rosney",
->>>>>>> 564115e0a7f4a3a10cb0766d8eefda7af6b468e2:package.json
   "license": "ISC",
   "keywords": [],
   "description": ""

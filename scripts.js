@@ -518,4 +518,5 @@ function getOldestKin(person){
     parents.forEach(function (parent) {
         kin.push(parent);
     });
-    kin.forEach(function (member) 
+    //kin.forEach(function (member) 
+}
