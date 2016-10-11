@@ -415,7 +415,6 @@ function getInfo(firstName, lastName) {
 }
 
 function getDescendants(id, descendants = []){
-    var descendants = [];
     console.log("checking for descendant of " + id);
     for (var i = 0; i < dataObject.length; i++) {
         //if the user's parents array contains id,
@@ -436,7 +435,6 @@ function getDescendants(id, descendants = []){
     console.log(descendants);
     return descendants;
 }
-
 function getParents(personOfInterest){
     var motherAndFather = [];
 
@@ -488,35 +486,4 @@ function getSiblings(parentIds){
 //which is an array to see if Dawn or the users social securtity matches in any
 //of the other objects parents array
 
-function getChildren(parentId){
-    var children = [];
-    for(var i = 0; i < dataObject.length; i++) {
-        var potentialChild = dataObject[i];
-        //-1 means something (in this case in the parents array) can be found or returned
-        //aka if there is a something that doesn't match with what we are
-        //looking for it doesn't push into the children array (or in another EX)
-        //if there is an array var cheese = ["blue", "swiss"] and someone types in
-        //cow, it has a indexOf or index position of -1 aka it does not exist)
-        if (potentialChild.parents.indexOf(parseInt(parentId)) > -1) {
-            children.push(potentialChild);
-        }
-    }
 
-    return children;
-}
-
-
-function getOldestKin(person){
-    var kin = [];
-    var spouse = getSpouse(parent.id);
-    kin.push(spouse);
-    var children =getChildren(person.id);
-    children.forEach(function (child) {
-        kin.push(child);
-    });
-    var parents =getParents(parents.id);
-    parents.forEach(function (parent) {
-        kin.push(parent);
-    });
-    //kin.forEach(function (member) 
-}

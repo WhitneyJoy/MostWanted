@@ -501,12 +501,12 @@ function getSiblings(parentIds){
 // }
 
 
-function filterPeople(characteristics){
-    var filterPeopleResults = "";
-}
-function responder(results){
-    alert(results);
-}
+// function filterPeople(characteristics){
+//     var filterPeopleResults = "";
+// }
+// function responder(results){
+//     alert(results);
+// }
 
 // var suspescts = [];
 
@@ -519,7 +519,7 @@ function responder(results){
 //    var personsAge = 2016 - (person.dob.slice(-4)));
 // })
 
-// initSearch();
+initSearch();
 
 
 //     var yourBirth = prompt("Do you know their date of birth?");
