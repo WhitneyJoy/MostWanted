@@ -295,20 +295,22 @@ function initSearch(){
     //function for the name
     //function for the traits
 
-    while (!(answer == "yes" || answer == "no")){
-        answer = prompt("Do you know who you are looking for? (yes or no)");
-    }
-    if(answer == "yes") {
-        while(firstName == ""){
-            firstName = prompt ("What's their first name?");
-        }
-        while(lastName == ""){
-            lastName = prompt ("What's their last name?");
-        }
-        while(!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
-            lookingFor=prompt("Are you looking for their (1) Info, (2) Descendants, (3) Family, or (4) Next of Kin. (Please type a number between 1-4)");
-            //filter? can we use a for loop here with a filter?
-        }
+    // while (!(answer == "yes" || answer == "no")){
+    //     answer = prompt("Do you know who you are looking for? (yes or no)");
+    // }
+    // if(answer == "yes") {
+    //     while(firstName == ""){
+    //         firstName = prompt ("What's their first name?");
+    //     }
+    //     while(lastName == ""){
+    //         lastName = prompt ("What's their last name?");
+    //     }
+    //     while(!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
+    //         lookingFor=prompt("Are you looking for their (1) Info, (2) Descendants, (3) Family, or (4) Next of Kin. (Please type a number between 1-4)");
+    //         //filter? can we use a for loop here with a filter?
+    //     }
+
+    
         switch(lookingFor){
             case "1":
                 var infoResults = getInfo(firstName, lastName);
