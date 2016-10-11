@@ -387,7 +387,9 @@ function initSearch(){
     }
 }
 
-function getInfo(firstName, lastName) {
+function getInfo() {
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;;
     var matches = [];
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
@@ -396,12 +398,14 @@ function getInfo(firstName, lastName) {
             console.log (firstName.toLowerCase());
         }
     }
+    console.log(matches);
     return matches;
 }
 
-function getDescendants(id, descendants = []){
+function getDescendants(personOfInterest, descendants = []){
+
     var descendants = [];
-    console.log("checking for descendant of " + id);
+    console.log("checking for descendant of " + personOfInterest[0].id);
     for (var i = 0; i < dataObject.length; i++) {
         //if the user's parents array contains id,
         //add this user to the results array,
@@ -486,6 +490,15 @@ function getSiblings(parentIds){
 //         if(!(list.age == " "))
 //     }
 // }
+
+// function displayResults(resultsArr){
+//     var results = " ";
+//     for(var i =0; i < resultsArr; i++){
+//     document.getElementById("displayArea").innerHTML = 
+//     }
+// }
+
+
 function filterPeople(characteristics){
     var filterPeopleResults = "";
 }
@@ -504,7 +517,7 @@ function responder(results){
 //    var personsAge = 2016 - (person.dob.slice(-4)));
 // })
 
-initSearch();
+// initSearch();
 
 
 //     var yourBirth = prompt("Do you know their date of birth?");
