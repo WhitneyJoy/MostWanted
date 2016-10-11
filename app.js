@@ -506,37 +506,42 @@ function getChildren(parentId){
 }
 
 
-function getOldestKin(person){
-    var kin = [];
-    var spouse = getSpouse(parent.id);
-    kin.push(spouse);
-    var children =getChildren(person.id);
-    children.forEach(function (child) {
-        kin.push(child);
-    });
-    var parents =getParents(parents.id);
-    parents.forEach(function (parent) {
-        kin.push(parent);
-    });
-    kin.forEach(function (member) {
-    });
-    personOfInterest = personOfInterest.filter(function(person){
-  	var personsAge = 2016 - (personOfInterest.dob.slice(-4));
-})
-}
+// function getOldestKin(person){
+//     var kin = [];
+//     var spouse = getSpouse(parent.id);
+//     kin.push(spouse);
+//     var children =getChildren(person.id);
+//     children.forEach(function (child) {
+//         kin.push(child);
+//     });
+//     var parents =getParents(parents.id);
+//     parents.forEach(function (parent) {
+//         kin.push(parent);
+//     });
+//     kin.forEach(function (member) {
+//     });
+//     for(var i = 0; i < dataObject.length; i++);
+//         var oldest= dataObject[0];
+//         if(oldest < dataObject[i].dob.slice(-4)){
+// }
 
-function filterCharacteristics(characteristics, input= []){
-    var input = [];
+//     personOfInterest = personOfInterest.filter(function(person){
+//   	var personsAge = 2016 - (personOfInterest.dob.slice(-4));
+// })
+// }
 
-characteristicsList = dataObject.filter(function(person){
-   return person.eyeColor === list.eyeColor && person.occupation === list.occupation;
-   if(list.age == " ");
-   	console.log(eyeColor);
-   	console.log(occupation);
-})
+// function filterCharacteristics(characteristics, input= []){
+//     var input = [];
+
+// characteristicsList = dataObject.filter(function(person){
+//    return person.eyeColor === list.eyeColor && person.occupation === list.occupation;
+//    if(list.age == " ");
+//    	console.log(eyeColor);
+//    	console.log(occupation);
+// })
 
 
-}
+// }
 
 function responder(results){
     alert(results);
