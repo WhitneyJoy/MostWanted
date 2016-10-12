@@ -363,17 +363,19 @@ function getSpouse(personOfInterest){
     }
 }
 
-function getSiblings(parentIds){
+function getSiblings(personOfInterest){
+    var siblings = [];
     var filterSiblings = function(user) {
         for (var i = 0; i < user.parents.length; i++) {
             var id = parentIds[i];
             if (user.parents.indexOf(id) > -1) {
-                return true;
+            siblings.push(parentIds[i]);
+            return true;
             }
         }
-        return false;
+            return false;
     };
-    return dataObject.filter(filterSiblings);
+            return dataObject.filter(filterSiblings);
 }
 
 function getChildren(personOfInterest){
@@ -387,7 +389,7 @@ function getChildren(personOfInterest){
         }
     }
     
-    return children;
+        return children;
 }
 
 // function getFamilyInfo() {
@@ -400,15 +402,15 @@ function getChildren(personOfInterest){
 //     console.log(allMyFam);
 // }
 
-// function getFamilyInfo() {
-//     var allMyFam = getSiblings(getInfo(getFirstNameParam(),getLastNameParam()));
-//     console.log(allMyFam);
-// }
-
 function getFamilyInfo() {
-    var allMyFam = getChildren(getInfo(getFirstNameParam(),getLastNameParam()));
+    var allMyFam = getSiblings(getInfo(getFirstNameParam(),getLastNameParam()));
     console.log(allMyFam);
 }
+
+// function getFamilyInfo() {
+//     var allMyFam = getChildren(getInfo(getFirstNameParam(),getLastNameParam()));
+//     console.log(allMyFam);
+// }
 
 
 function displayFamilyInfo() {
