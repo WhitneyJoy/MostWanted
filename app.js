@@ -474,25 +474,43 @@ function getSiblings(parentIds){
 }
 
 
-// function getChildren(parentIdResults){
-//     for(var i = 0; i <dataObject.length; i++)
-//     var idToNumber = parseInt(idResults, 10);
-//     var firstParent = dataObject[i].parents[0];
-//     var lastParent = dataObject[i].parents[1];
-//     if(idToNumber === firstParent || idToNumber === secondParent ){
-//         alert(dataObject[i].firstName + " " + dataObject[i].lastName);
-//     }
-// }
+function getChildren(parentIdResults){
+    for(var i = 0; i <dataObject.length; i++)
+    var idToNumber = parseInt(idResults, 10);
+    var firstParent = dataObject[i].parents[0];
+    var lastParent = dataObject[i].parents[1];
+    if(idToNumber === firstParent || idToNumber === secondParent ){
+        alert(dataObject[i].firstName + " " + dataObject[i].lastName);
+    }
+}
 
 
-// function getKin(firstName, lastName, getKinResults = []){
-//     var getKinResults = "";
-//     kin = dataObject.filter(function(getKin)){
-//         return getKin.eyeColor === list.eyeColor && getKin.occupation === list.occupation;
-//         if(!(list.age == " "))
-//     }
-// }
+function getOldestKin(person){
+    var kin = [];
+    var spouse = getSpouse(parent.id);
+    kin.push(spouse);
+    var children =getChildren(person.id);
+    children.forEach(function (child) {
+        kin.push(child);
+    });
+    var parents =getParents(parents.id);
+    parents.forEach(function (parent) {
+        kin.push(parent);
+    });
 
+    var oldest= kin[0];
+    for(var i = 0; i < kin.length; i++) {
+        var person = kin[i];
+        var oldestBirthday = new Date(oldest.dob);
+        var birthday = new Date(person.dob);
+        if (birthday < oldestBirthday) {
+            oldest = person;
+        }
+    }
+
+})
+    return oldest;
+}
 // function displayResults(resultsArr){
 //     var results = " ";
 //     for(var i =0; i < resultsArr; i++){
