@@ -364,18 +364,15 @@ function getSpouse(personOfInterest){
 }
 
 function getSiblings(personOfInterest){
-    var siblings = [];
     var filterSiblings = function(user) {
         for (var i = 0; i < user.parents.length; i++) {
-            var id = parentIds[i];
-            if (user.parents.indexOf(id) > -1) {
-            siblings.push(parentIds[i]);
-            return true;
+            var id = personOfInterest.parents[0];
+            if(user.parents.indexOf(id) > -1 && personOfInterest.id !== user.id) {
+                return true;
             }
         }
-            return false;
     };
-            return dataObject.filter(filterSiblings);
+    return dataObject.filter(filterSiblings);
 }
 
 function getChildren(personOfInterest){
