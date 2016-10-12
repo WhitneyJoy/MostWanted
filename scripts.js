@@ -440,9 +440,7 @@ function getParents(personOfInterest){
 
     //var callback = function(id){}
     //grabbing the parent ids of the person of interest the parent ids is an array in the object
-    console.log(personOfInterest);
     var parentIds = personOfInterest.parents;
-    console.log(parentIds);
     if(parentIds.length == 0){
         return [];
     }

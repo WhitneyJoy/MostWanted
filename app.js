@@ -508,7 +508,7 @@ function getOldestKin(person){
         }
     }
 
-})
+}
     return oldest;
 }
 
