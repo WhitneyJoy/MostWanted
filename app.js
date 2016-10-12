@@ -291,9 +291,7 @@ function initSearch(){
     var lookingFor = "";
     var characteristic = "";
     var characteristics = [];
-
-    //function for the name
-    //function for the traits
+}
 
     // while (!(answer == "yes" || answer == "no")){
     //     answer = prompt("Do you know who you are looking for? (yes or no)");
@@ -308,112 +306,114 @@ function initSearch(){
     //     while(!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
     //         lookingFor=prompt("Are you looking for their (1) Info, (2) Descendants, (3) Family, or (4) Next of Kin. (Please type a number between 1-4)");
     //         //filter? can we use a for loop here with a filter?
-    //     }
+//         }
 
-    
-        switch(lookingFor){
-            case "1":
-                var infoResults = getInfo(firstName, lastName);
-                var allInfo = " ID: " + infoResults[0]['id'] + " First Name: " + infoResults[0]['firstName'] + " Last Name: " + 
-                infoResults[0]['lastName'] + " Gender: " + infoResults[0]['gender'] + " Date of Birth: " + infoResults[0]['dob'] + 
-                " Height: " + infoResults[0]['height'] + " Weight: " + infoResults[0]['weight'] + " Eye Color: " + infoResults[0]['eyeColor'] +
-                " Occupation: " + infoResults[0]['occupation'] + " Parents: " + infoResults[0]['parents'] + " Current Spouse: " +
-                 infoResults[0]['currentSpouse'];
-                alert(allInfo);
-            break;
-            case "2": 
-                var infoResults = getInfo(firstName, lastName);
-                var parent = infoResults[0];
-                if (parent == undefined) {
-                    alert('User not found.');
-                    return;
-                }
-                var descendantResults = getDescendants(parent.id);
-                if (descendantResults.length === 0) {
-                    alert("There are no descendants");
-                    return;
-                }
-                var output = "";
-                for(var i = 0; i < descendantResults.length; i++) {
-                    var descendant = descendantResults[i];
-                    var personalId = " ID: " + descendant.id  + " First Name: " + descendant.firstName + " Last Name: " + descendant.lastName;
-                    output+= personalId + "\r\n";
-                }
-                alert(output);
-            break;
-            case "3":
-                var infoResults = getInfo(firstName, lastName);
-                var personOfInterest = infoResults[0];
-                if (personOfInterest === undefined) {
-                    alert("User not found.");
-                    return;
-                }
-                var parentsNameResults = getParents(personOfInterest);
-                console.log(parentsNameResults);
-                if (parentsNameResults.length === 0) {
-                    alert("There are no parents");
-                } else {    
-                    var parentsOutput = "";
-                    var callback = function(parent){
-                        parentsOutput += " Parents ID " + parent.id + " Parents First Name " + parent.firstName + " Parents Last Name " + parent.lastName + "\r\n";
-                    }
-                    parentsNameResults.forEach(callback);
-                    alert(parentsOutput); 
-                }
+//         switch(lookingFor){
+//             case "1":
+//                 var infoResults = getInfo(firstName, lastName);
+//                 var allInfo = " ID: " + infoResults[0]['id'] + " First Name: " + infoResults[0]['firstName'] + " Last Name: " + 
+//                 infoResults[0]['lastName'] + " Gender: " + infoResults[0]['gender'] + " Date of Birth: " + infoResults[0]['dob'] + 
+//                 " Height: " + infoResults[0]['height'] + " Weight: " + infoResults[0]['weight'] + " Eye Color: " + infoResults[0]['eyeColor'] +
+//                 " Occupation: " + infoResults[0]['occupation'] + " Parents: " + infoResults[0]['parents'] + " Current Spouse: " +
+//                  infoResults[0]['currentSpouse'];
+//                 alert(allInfo);
+//             break;
+//             case "2": 
+//                 var infoResults = getInfo(firstName, lastName);
+//                 var parent = infoResults[0];
+//                 if (parent == undefined) {
+//                     alert('User not found.');
+//                     return;
+//                 }
+//                 var descendantResults = getDescendants(parent.id);
+//                 if (descendantResults.length === 0) {
+//                     alert("There are no descendants");
+//                     return;
+//                 }
+//                 var output = "";
+//                 for(var i = 0; i < descendantResults.length; i++) {
+//                     var descendant = descendantResults[i];
+//                     var personalId = " ID: " + descendant.id  + " First Name: " + descendant.firstName + " Last Name: " + descendant.lastName;
+//                     output+= personalId + "\r\n";
+//                 }
+//                 alert(output);
+//             break;
+//             case "3":
+//                 var infoResults = getInfo(firstName, lastName);
+//                 var personOfInterest = infoResults[0];
+//                 if (personOfInterest === undefined) {
+//                     alert("User not found.");
+//                     return;
+//                 }
+//                 var parentsNameResults = getParents(personOfInterest);
+//                 console.log(parentsNameResults);
+//                 if (parentsNameResults.length === 0) {
+//                     alert("There are no parents");
+//                 } else {    
+//                     var parentsOutput = "";
+//                     var callback = function(parent){
+//                         parentsOutput += " Parents ID " + parent.id + " Parents First Name " + parent.firstName + " Parents Last Name " + parent.lastName + "\r\n";
+//                     }
+//                     parentsNameResults.forEach(callback);
+//                     alert(parentsOutput); 
+//                 }
 
-                if (personOfInterest.currentSpouse != null){
-                    var spouse = getSpouse(personOfInterest.currentSpouse);
-                    console.log(spouse);
-                    alert(spouse.firstName + " " + spouse.lastName);
+//                 if (personOfInterest.currentSpouse != null){
+//                     var spouse = getSpouse(personOfInterest.currentSpouse);
+//                     console.log(spouse);
+//                     alert(spouse.firstName + " " + spouse.lastName);
 
-                } else {
-                    alert("There is no spouse");
-                }
+//                 } else {
+//                     alert("There is no spouse");
+//                 }
 
-                 if (personOfInterest.parents.length > 0){
-                    var siblings = getSiblings(personOfInterest.parents);
-                    console.log(siblings);
-                    alert(siblings[0].firstName);
-                } else {
-                    alert("There are no siblings");
-                    return;
-                }
-            break;
-            case "4":
-            break;
-        }
+//                  if (personOfInterest.parents.length > 0){
+//                     var siblings = getSiblings(personOfInterest.parents);
+//                     console.log(siblings);
+//                     alert(siblings[0].firstName);
+//                 } else {
+//                     alert("There are no siblings");
+//                     return;
+//                 }
+//             break;
+//             case "4":
+//             break;
+//         }
 
-    }else{
-        alert("Please come back when you have more information.");
-        return;
-    }
+//     }else{
+//         alert("Please come back when you have more information.");
+//         return;
+//     }
+// }
+
+
+
+
+function getFirstNameParam(){
+    return document.getElementById("firstName").value;
 }
 
-function getInfo() {
-    var firstName = document.getElementById("firstName").value;
-    var lastName = document.getElementById("lastName").value;;
-    var matches = [];
+function getLastNameParam(){
+    return document.getElementById("lastName").value;
+}
+
+function getInfo(firstName,lastName){
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
         if (user.firstName.toLowerCase() === firstName.toLowerCase() && user.lastName.toLowerCase() === lastName.toLowerCase()) {
-            matches.push(user);
-            console.log (firstName.toLowerCase());
+            return user;
         }
     }
-    console.log(matches);
-    return matches;
+    console.log('User not found');
+    var personsInfo = getInfo(getFirstNameParam(),getLastNameParam());
+    return null;
 }
 
 function getDescendants(personOfInterest, descendants = []){
-
     var descendants = [];
     console.log("checking for descendant of " + personOfInterest[0].id);
     for (var i = 0; i < dataObject.length; i++) {
-        //if the user's parents array contains id,
-        //add this user to the results array,
         var user = dataObject[i];
-        //-1 means what they entered doesn't exist in the array so this is saying
-        //return only what exists in the array
         if (user.parents.indexOf(parseInt(id)) > -1) {
             descendants.push(user);
             var userIdToCheck = user.id;
@@ -428,11 +428,22 @@ function getDescendants(personOfInterest, descendants = []){
     return descendants;
 }
 
+function findDescendants(person){
+    if(!person){
+        // throw error
+        console.log("person doesn't exist.");
+    }
+    return getDescendants(person);
+}
+
+function displayDescendants(){
+    var allMyDesc = findDescendants(getInfo(getFirstNameParam(),getLastNameParam()));
+    // display them here
+    // make sure it runs sync
+}
+
 function getParents(personOfInterest){
     var motherAndFather = [];
-
-    //var callback = function(id){}
-    //grabbing the parent ids of the person of interest the parent ids is an array in the object
     console.log(personOfInterest);
     var parentIds = personOfInterest.parents;
     console.log(parentIds);
@@ -443,7 +454,6 @@ function getParents(personOfInterest){
         var id = parseInt(user.id);
         //indexOf grabs the key of the value or the position value
         return parentIds.indexOf(id) > -1;
-
     };
     return dataObject.filter(filterCallback);
 }
@@ -473,7 +483,6 @@ function getSiblings(parentIds){
     alert(siblings);
 }
 
-
 function getChildren(parentIdResults){
     for(var i = 0; i <dataObject.length; i++)
     var idToNumber = parseInt(idResults, 10);
@@ -484,75 +493,74 @@ function getChildren(parentIdResults){
     }
 }
 
+// function getOldestKin(person){
+//     var kin = [];
+//     var spouse = getSpouse(parent.id);
+//     kin.push(spouse);
+//     var children =getChildren(person.id);
+//     children.forEach(function (child) {
+//         kin.push(child);
+//     });
+//     var parents =getParents(parents.id);
+//     parents.forEach(function (parent) {
+//         kin.push(parent);
+//     });
 
-function getOldestKin(person){
-    var kin = [];
-    var spouse = getSpouse(parent.id);
-    kin.push(spouse);
-    var children =getChildren(person.id);
-    children.forEach(function (child) {
-        kin.push(child);
-    });
-    var parents =getParents(parents.id);
-    parents.forEach(function (parent) {
-        kin.push(parent);
-    });
+//     var oldest= kin[0];
+//     for(var i = 0; i < kin.length; i++) {
+//         var person = kin[i];
+//         var oldestBirthday = new Date(oldest.dob);
+//         var birthday = new Date(person.dob);
+//         if (birthday < oldestBirthday) {
+//             oldest = person;
+//         }
+//     }
 
-    var oldest= kin[0];
-    for(var i = 0; i < kin.length; i++) {
-        var person = kin[i];
-        var oldestBirthday = new Date(oldest.dob);
-        var birthday = new Date(person.dob);
-        if (birthday < oldestBirthday) {
-            oldest = person;
-        }
-    }
-
-}
-    return oldest;
-}
+// }
+//     return oldest;
+// }
 
 //input is what we need to run the function
-function filterCharacteristics(input){
+// function filterCharacteristics(input){
     //you split their input by it finding the comma between what they type in
     //whenever you use split it returns as an array
-    var termsArray = input.split(",");
+    // var termsArray = input.split(",");
     //terms is an empty object
-    var terms = {};
+    // var terms = {};
     //we are looping through the user input that was split into an array
-    for (var i = 0; i < termsArray.length; i++) {
+    // for (var i = 0; i < termsArray.length; i++) {
         //term holds the position of whatever is iterating through the for loop
-        var term = termsArray[i];
+        // var term = termsArray[i];
         //this splits the current iteration postion by they equals by key = value
         //and returns and array called splitTerm
-        var splitTerm = term.split('=');
+        // var splitTerm = term.split('=');
         //this returns they first position/key of split term array
-        var characteristic = splitTerm[0];
+        // var characteristic = splitTerm[0];
         //this returns the second position/value of the split term array
-        var characteristicValue = splitTerm[1];
+        // var characteristicValue = splitTerm[1];
         //this is the objects key equals the value
-        terms[characteristic] = characteristicValue;
-    }
+        // terms[characteristic] = characteristicValue;
+    // }
 
-    var filterCallback = function (user) {
-        //characteristic is they key and terms is the object
-        for (var characteristic in terms) {
-            //if object has key and what the user passes in as a 
-            //key does not match with the object key it will return false
-            if (terms.hasOwnProperty(characteristic)) {
-                if (user[characteristic] != terms[characteristic]) {
-                    return false;
-                }
-            }
-        }
+    // var filterCallback = function (user) {
+    //     characteristic is they key and terms is the object
+    //     for (var characteristic in terms) {
+    //         if object has key and what the user passes in as a 
+    //         key does not match with the object key it will return false
+    //         if (terms.hasOwnProperty(characteristic)) {
+    //             if (user[characteristic] != terms[characteristic]) {
+    //                 return false;
+    //             }
+    //         }
+    //     }
         //if is able to loop through the whole object return true
-        return true;
-    };
+    //     return true;
+    // };
     //then the object filters and only returns what is found in the function
     //and stored in the variable users and returns that
-    var users = dataObject.filter(filterCallback);
+    // var users = dataObject.filter(filterCallback);
 
-    return users;
+    // return users;
     
 // function displayResults(resultsArr){
 //     var results = " ";
@@ -560,8 +568,6 @@ function filterCharacteristics(input){
 //     document.getElementById("displayArea").innerHTML = 
 //     }
 // }
-
-
 
 
 initSearch();
@@ -586,7 +592,6 @@ initSearch();
 //arrays are positions and objects are keys
 //function to validate traits- if it returns a true value for that object it gets passed into a new array
 //that's a filter for traits 
-
 
 
 
