@@ -293,102 +293,6 @@ function initSearch(){
     var characteristics = [];
 }
 
-    // while (!(answer == "yes" || answer == "no")){
-    //     answer = prompt("Do you know who you are looking for? (yes or no)");
-    // }
-    // if(answer == "yes") {
-    //     while(firstName == ""){
-    //         firstName = prompt ("What's their first name?");
-    //     }
-    //     while(lastName == ""){
-    //         lastName = prompt ("What's their last name?");
-    //     }
-    //     while(!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
-    //         lookingFor=prompt("Are you looking for their (1) Info, (2) Descendants, (3) Family, or (4) Next of Kin. (Please type a number between 1-4)");
-    //         //filter? can we use a for loop here with a filter?
-//         }
-
-//         switch(lookingFor){
-//             case "1":
-//                 var infoResults = getInfo(firstName, lastName);
-//                 var allInfo = " ID: " + infoResults[0]['id'] + " First Name: " + infoResults[0]['firstName'] + " Last Name: " + 
-//                 infoResults[0]['lastName'] + " Gender: " + infoResults[0]['gender'] + " Date of Birth: " + infoResults[0]['dob'] + 
-//                 " Height: " + infoResults[0]['height'] + " Weight: " + infoResults[0]['weight'] + " Eye Color: " + infoResults[0]['eyeColor'] +
-//                 " Occupation: " + infoResults[0]['occupation'] + " Parents: " + infoResults[0]['parents'] + " Current Spouse: " +
-//                  infoResults[0]['currentSpouse'];
-//                 alert(allInfo);
-//             break;
-//             case "2": 
-//                 var infoResults = getInfo(firstName, lastName);
-//                 var parent = infoResults[0];
-//                 if (parent == undefined) {
-//                     alert('User not found.');
-//                     return;
-//                 }
-//                 var descendantResults = getDescendants(parent.id);
-//                 if (descendantResults.length === 0) {
-//                     alert("There are no descendants");
-//                     return;
-//                 }
-//                 var output = "";
-//                 for(var i = 0; i < descendantResults.length; i++) {
-//                     var descendant = descendantResults[i];
-//                     var personalId = " ID: " + descendant.id  + " First Name: " + descendant.firstName + " Last Name: " + descendant.lastName;
-//                     output+= personalId + "\r\n";
-//                 }
-//                 alert(output);
-//             break;
-//             case "3":
-//                 var infoResults = getInfo(firstName, lastName);
-//                 var personOfInterest = infoResults[0];
-//                 if (personOfInterest === undefined) {
-//                     alert("User not found.");
-//                     return;
-//                 }
-//                 var parentsNameResults = getParents(personOfInterest);
-//                 console.log(parentsNameResults);
-//                 if (parentsNameResults.length === 0) {
-//                     alert("There are no parents");
-//                 } else {    
-//                     var parentsOutput = "";
-//                     var callback = function(parent){
-//                         parentsOutput += " Parents ID " + parent.id + " Parents First Name " + parent.firstName + " Parents Last Name " + parent.lastName + "\r\n";
-//                     }
-//                     parentsNameResults.forEach(callback);
-//                     alert(parentsOutput); 
-//                 }
-
-//                 if (personOfInterest.currentSpouse != null){
-//                     var spouse = getSpouse(personOfInterest.currentSpouse);
-//                     console.log(spouse);
-//                     alert(spouse.firstName + " " + spouse.lastName);
-
-//                 } else {
-//                     alert("There is no spouse");
-//                 }
-
-//                  if (personOfInterest.parents.length > 0){
-//                     var siblings = getSiblings(personOfInterest.parents);
-//                     console.log(siblings);
-//                     alert(siblings[0].firstName);
-//                 } else {
-//                     alert("There are no siblings");
-//                     return;
-//                 }
-//             break;
-//             case "4":
-//             break;
-//         }
-
-//     }else{
-//         alert("Please come back when you have more information.");
-//         return;
-//     }
-// }
-
-
-
-
 function getFirstNameParam(){
     return document.getElementById("firstName").value;
 }
@@ -460,7 +364,7 @@ function getSpouse(personOfInterest){
 }
 
 function getSiblings(parentIds){
-    var callback = function(user) {
+    var filterSiblings = function(user) {
         for (var i = 0; i < user.parents.length; i++) {
             var id = parentIds[i];
             if (user.parents.indexOf(id) > -1) {
@@ -469,24 +373,43 @@ function getSiblings(parentIds){
         }
         return false;
     };
-    var siblings = dataObject.filter(callback);
-    alert(siblings);
+    return dataObject.filter(filterSiblings);
 }
 
-function getChildren(parentIdResults){
-    for(var i = 0; i <dataObject.length; i++)
-    var idToNumber = parseInt(idResults, 10);
-    var firstParent = dataObject[i].parents[0];
-    var lastParent = dataObject[i].parents[1];
-    if(idToNumber === firstParent || idToNumber === secondParent ){
-        alert(dataObject[i].firstName + " " + dataObject[i].lastName);
+function getChildren(personOfInterest){
+    var children = [];
+    for(var i = 0; i < dataObject.length; i++){
+        var idToNumber = parseInt(personOfInterest.id);
+        var firstParent = dataObject[i].parents[0];
+        var lastParent = dataObject[i].parents[1];
+        if(idToNumber === firstParent || idToNumber === lastParent){
+        children.push(dataObject[i]); 
+        }
     }
+    
+    return children;
 }
+
+// function getFamilyInfo() {
+//     var allMyFam = getSpouse(getInfo(getFirstNameParam(),getLastNameParam()));
+//     console.log(allMyFam);
+// }
+
+// function getFamilyInfo() {
+//     var allMyFam = getParents(getInfo(getFirstNameParam(),getLastNameParam()));
+//     console.log(allMyFam);
+// }
+
+// function getFamilyInfo() {
+//     var allMyFam = getSiblings(getInfo(getFirstNameParam(),getLastNameParam()));
+//     console.log(allMyFam);
+// }
 
 function getFamilyInfo() {
-    var allMyFam = getSpouse(getInfo(getFirstNameParam(),getLastNameParam()));
+    var allMyFam = getChildren(getInfo(getFirstNameParam(),getLastNameParam()));
     console.log(allMyFam);
 }
+
 
 function displayFamilyInfo() {
 
