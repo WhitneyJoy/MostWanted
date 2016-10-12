@@ -59,7 +59,7 @@
             <div>
               <button class="btn formMargin" onclick="getInfo(getFirstNameParam(),getLastNameParam())" type="button">Get
               Personal Info</button>
-              <button type="button" class="btn" onclick="findDescendants()">Get Descendant Info</button> 
+              <button type="button" class="btn" onclick="displayDescendants()">Get Descendant Info</button> 
             </div><br>
             <div>
               <div class="col s12 m4">
@@ -67,12 +67,12 @@
                   <h2 class="center brown-text"><i class="material-icons">group</i></h2>
                   <h5 class="center">Detail your search below</h5>
                   <a class='dropdown-button btn' data-activates='dropdown1' href='#'>Get Family Info</a>
-                  <ul class='dropdown-content' id='dropdown1'>
-                    <li><button onclick="myFunction()">Get Parent Info</button></li>
-                    <li><button onclick="myFunction()">Get Spouse Info</button></li>
-                    <li><button onclick="myFunction()">Get Sibling Info</button></li>
-                    <li><button onclick="myFunction()">Get Children Info</button></li>
-                  </ul>
+                 <!--  <ul class='dropdown-content' id='dropdown1'> -->
+                    <li><button type = "button" onclick="myFunction()">Get Parent Info</button></li>
+                    <li><button type = "button" onclick="getFamilyInfo()">Get Spouse Info</button></li>
+                    <li><button type = "button" onclick="myFunction()">Get Sibling Info</button></li>
+                    <li><button type = "button" onclick="myFunction()">Get Children Info</button></li>
+                 <!--  </ul> -->
                 </div><button class="dropdown-button btn" onclick="myFunction()">Get
                 Next Of Kin</button>
                 <div class="col s12 m4">

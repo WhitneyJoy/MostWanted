@@ -401,43 +401,34 @@ function getInfo(firstName,lastName){
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
         if (user.firstName.toLowerCase() === firstName.toLowerCase() && user.lastName.toLowerCase() === lastName.toLowerCase()) {
+            console.log(user);
             return user;
         }
     }
     console.log('User not found');
-    var personsInfo = getInfo(getFirstNameParam(),getLastNameParam());
     return null;
 }
 
-function getDescendants(personOfInterest, descendants = []){
+function getDescendants(personOfInterest){
     var descendants = [];
-    console.log("checking for descendant of " + personOfInterest[0].id);
+    var id = personOfInterest.id;
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
         if (user.parents.indexOf(parseInt(id)) > -1) {
             descendants.push(user);
             var userIdToCheck = user.id;
             //TODO then retrieve THAT user's descendants
-            var childDescendants = getDescendants(userIdToCheck);
+            var childDescendants = getDescendants(user);
             //TODO concat childDescendants into descendants
             descendants = descendants.concat(childDescendants);
         }
     }
-    console.log('DESCENDANTS');
-    console.log(descendants);
     return descendants;
 }
 
-function findDescendants(person){
-    if(!person){
-        // throw error
-        console.log("person doesn't exist.");
-    }
-    return getDescendants(person);
-}
-
 function displayDescendants(){
-    var allMyDesc = findDescendants(getInfo(getFirstNameParam(),getLastNameParam()));
+    var allMyDesc = getDescendants(getInfo(getFirstNameParam(),getLastNameParam()));
+    console.log(allMyDesc);
     // display them here
     // make sure it runs sync
 }
@@ -458,11 +449,10 @@ function getParents(personOfInterest){
     return dataObject.filter(filterCallback);
 }
 
-function getSpouse(spouseId){
-    if(spouseId){
+function getSpouse(personOfInterest){
+    if(personOfInterest.currentSpouse){
         for (var i = 0; i < dataObject.length; i++) {
-            if (spouseId == dataObject[i].id){
-                console.log (dataObject[i]);
+            if (personOfInterest.currentSpouse == dataObject[i].id){
                 return dataObject[i];
             }
         }
@@ -493,6 +483,14 @@ function getChildren(parentIdResults){
     }
 }
 
+function getFamilyInfo() {
+    var allMyFam = getSpouse(getInfo(getFirstNameParam(),getLastNameParam()));
+    console.log(allMyFam);
+}
+
+function displayFamilyInfo() {
+
+}
 // function getOldestKin(person){
 //     var kin = [];
 //     var spouse = getSpouse(parent.id);
