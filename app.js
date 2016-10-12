@@ -511,6 +511,49 @@ function getOldestKin(person){
 })
     return oldest;
 }
+
+//input is what we need to run the function
+function filterCharacteristics(input){
+    //you split their input by it finding the comma between what they type in
+    //whenever you use split it returns as an array
+    var termsArray = input.split(",");
+    //terms is an empty object
+    var terms = {};
+    //we are looping through the user input that was split into an array
+    for (var i = 0; i < termsArray.length; i++) {
+        //term holds the position of whatever is iterating through the for loop
+        var term = termsArray[i];
+        //this splits the current iteration postion by they equals by key = value
+        //and returns and array called splitTerm
+        var splitTerm = term.split('=');
+        //this returns they first position/key of split term array
+        var characteristic = splitTerm[0];
+        //this returns the second position/value of the split term array
+        var characteristicValue = splitTerm[1];
+        //this is the objects key equals the value
+        terms[characteristic] = characteristicValue;
+    }
+
+    var filterCallback = function (user) {
+        //characteristic is they key and terms is the object
+        for (var characteristic in terms) {
+            //if object has key and what the user passes in as a 
+            //key does not match with the object key it will return false
+            if (terms.hasOwnProperty(characteristic)) {
+                if (user[characteristic] != terms[characteristic]) {
+                    return false;
+                }
+            }
+        }
+        //if is able to loop through the whole object return true
+        return true;
+    };
+    //then the object filters and only returns what is found in the function
+    //and stored in the variable users and returns that
+    var users = dataObject.filter(filterCallback);
+
+    return users;
+    
 // function displayResults(resultsArr){
 //     var results = " ";
 //     for(var i =0; i < resultsArr; i++){
@@ -519,23 +562,7 @@ function getOldestKin(person){
 // }
 
 
-// function filterPeople(characteristics){
-//     var filterPeopleResults = "";
-// }
-// function responder(results){
-//     alert(results);
-// }
 
-// var suspescts = [];
-
-// suspects = dataObject.filter(function(person){
-//    reutrn person.eyeColor === query.eyeColor && person.occupation === query.occupation;
-//    if(!(query.age == " "))
-// }
-
-// suspects = suspects.fileter(funcion(person){
-//    var personsAge = 2016 - (person.dob.slice(-4)));
-// })
 
 initSearch();
 
