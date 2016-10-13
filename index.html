@@ -48,7 +48,7 @@
       <div class="container">
         <div class="section">
           <div class="row">
-            <form class="col s12">
+<!--             <form class="col s12">
               <div class="row">
                 <div class="input-field col s6">
                   <input class="validate" id="firstName" type=
@@ -95,7 +95,60 @@
                           Filter</button>
                         </div><br>
                       </div>
-                    </form>
+                    </form> -->
+                    <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input class="validate" id="firstName" placeholder="Placeholder" type=
+                  "text"> <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input class="validate" id="lastName" type="text"> <label for=
+                  "last_name">Last Name</label>
+                </div>
+                <div>
+                    <!-- Dropdown Trigger -->
+                <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Search</a>
+                <ul id='dropdown1' class='dropdown-content'>
+                  <li>
+                    <button class="waves-effect waves-light btn" onclick="getInfo(getFirstNameParam(),getLastNameParam())" type="button">Personal</button> 
+                  </li>
+                  <li>
+                    <button class="waves-effect waves-light btn"onclick="displayDescendants()" type="button">Descendant</button>
+                  </li>
+                  <li>
+                    <button class="waves-effect waves-light btn" onclick="displayFamilyInfo()" type=
+                    "button">Family</button>
+                  </li>
+                  <li>
+                    <button class="waves-effect waves-light btn" onclick="getOldestKinInfo()" type="button">Next Of Kin</button>
+                  </li>
+<!--                   <li class="divider"></li>
+                  <li><a href="#!">three</a></li> -->
+                </ul>
+                <input class="validate" id="characteristics" type="text"> <label for="first_name">Eye Color</label>
+                </div>
+                <div class="input-field col s6">
+                  <input class="validate" id="characteristics" type="text"> <label for=
+                  "last_name">Weight</label>
+                </div>
+                <div class="input-field col s6">
+                  <input class="validate" id="characteristics" type="text"> <label for=
+                  "last_name">Height</label>
+                </div>
+                <div class="input-field col s6">
+                  <input class="validate" id="characteristics" type="text"> <label for=
+                  "last_name">Occupation</label>
+                </div>
+                <div class="input-field col s6">
+                  <input class="validate" id="characteristics" type="text"> <label for=
+                  "last_name">Age</label>
+                </div>
+                <div>
+                  <button class="waves-effect waves-light btn" onclick="getFilterCharacteristics()" type="button">Seach and Filter</button>
+                </div><br>
+              </div>
+            </form>
                   </div>
                 </div>
               </div>
