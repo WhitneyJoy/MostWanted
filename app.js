@@ -305,6 +305,7 @@ function getInfo(firstName,lastName){
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
         if (user.firstName.toLowerCase() === firstName.toLowerCase() && user.lastName.toLowerCase() === lastName.toLowerCase()) {
+            console.log(user);
             return user;
         }
     }
@@ -331,6 +332,7 @@ function getDescendants(personOfInterest){
 
 function displayDescendants(){
     var allMyDesc = getDescendants(getInfo(getFirstNameParam(),getLastNameParam()));
+    console.log(allMyDesc);
     // display them here
     // make sure it runs sync
 }
@@ -475,46 +477,53 @@ function getOldestKinInfo() {
 }
 
 //input is what we need to run the function
-// function filterCharacteristics(input){
+function filterCharacteristics(input){
     //you split their input by it finding the comma between what they type in
     //whenever you use split it returns as an array
-    // var termsArray = input.split(",");
+    var termsArray = input.split(",");
     //terms is an empty object
-    // var terms = {};
+    var terms = {};
     //we are looping through the user input that was split into an array
-    // for (var i = 0; i < termsArray.length; i++) {
+    for (var i = 0; i < termsArray.length; i++) {
         //term holds the position of whatever is iterating through the for loop
-        // var term = termsArray[i];
+        var term = termsArray[i];
         //this splits the current iteration postion by they equals by key = value
         //and returns and array called splitTerm
-        // var splitTerm = term.split('=');
+        var splitTerm = term.split('=');
         //this returns they first position/key of split term array
-        // var characteristic = splitTerm[0];
+        var characteristic = splitTerm[0];
         //this returns the second position/value of the split term array
-        // var characteristicValue = splitTerm[1];
+        var characteristicValue = splitTerm[1];
         //this is the objects key equals the value
-        // terms[characteristic] = characteristicValue;
-    // }
+        terms[characteristic] = characteristicValue;
+    }
 
-    // var filterCallback = function (user) {
+    var filterCallback = function (user) {
     //     characteristic is they key and terms is the object
-    //     for (var characteristic in terms) {
+        for (var characteristic in terms) {
     //         if object has key and what the user passes in as a 
     //         key does not match with the object key it will return false
-    //         if (terms.hasOwnProperty(characteristic)) {
-    //             if (user[characteristic] != terms[characteristic]) {
-    //                 return false;
-    //             }
-    //         }
-    //     }
+            if (terms.hasOwnProperty(characteristic)) {
+                if (user[characteristic] != terms[characteristic]) {
+                    return false;
+                }
+            }
+        }
         //if is able to loop through the whole object return true
-    //     return true;
-    // };
+        return true;
+    };
     //then the object filters and only returns what is found in the function
     //and stored in the variable users and returns that
-    // var users = dataObject.filter(filterCallback);
+    var users = dataObject.filter(filterCallback);
 
-    // return users;
+    return users;
+}
+
+function getFilterCharacteristics() {
+    var input = document.getElementById('characteristics');
+    var characteristicsResults = filterCharacteristics(input.value);
+     console.log(characteristicsResults);
+}
     
 // function displayResults(resultsArr){
 //     var results = " ";

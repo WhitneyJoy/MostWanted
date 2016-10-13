@@ -81,13 +81,10 @@
                     <h2 class="center brown-text"><i class=
                     "material-icons">group</i></h2>
                     <h5 class="center">Search and filter</h5>
-                    <form class="row center" id="form" name="form" role="form">
+                     <form id="form" name="form" role="form">
                       <div>
-                        <label class="labelForm">Eyes:</label> <input class="Eye Color"
-                        type="eye color" value="Eye Color">
-                      </div>
-                      <div>
-                        <button type="button" class="btn" onclick="myFunction()">Search
+                        <label class="labelForm">Characteristics:</label> <input class="characteristics" id="characteristics" placeholder="key=value,key=value" type="characteristicsText">
+                        <button type="button" class="btn" onclick="getFilterCharacteristics()">Search
                         and Filter</button><br>
                       </div>
                     </form>
