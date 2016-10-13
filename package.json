@@ -12,10 +12,32 @@
   "scripts": {
     "test": "karma start karma.conf.js"
   },
-
-  
   "author": "rosney",
   "license": "ISC",
   "keywords": [],
-  "description": ""
+  "description": "![alt tag](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif) ===========",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhitneyJoy/MostWanted.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WhitneyJoy/MostWanted/issues"
+  },
+  "homepage": "https://github.com/WhitneyJoy/MostWanted#readme",
+  "eslintConfig": {
+ "extends": "eslint:recommended",
+ "env": {
+   "browser": true,
+   "es6": true
+ },
+ "parserOptions": {
+   "ecmaVersion": 6,
+   "sourceType": "module"
+ },
+ "rules": {
+   "semi": 1,
+   "no-unused-vars": 0,
+   "no-console": 0
+    }
+  }
 }

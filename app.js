@@ -9,7 +9,7 @@ var dataObject = [{
     "eyeColor": "brown",
     "occupation": "programmer",
     "parents": [],
-    "currentSpouse": "401222887",
+    "currentSpouse": "401222887"
 }, {
     "id": "401222887",
     "firstName": "Uma",
@@ -21,7 +21,7 @@ var dataObject = [{
     "eyeColor": "brown",
     "occupation": "assistant",
     "parents": [],
-    "currentSpouse": "272822514",
+    "currentSpouse": "272822514"
 }, {
     "id": "409574486",
     "firstName": "Michael",
@@ -261,7 +261,7 @@ var dataObject = [{
     "eyeColor": "blue",
     "occupation": "doctor",
     "parents": [313207561, 313997561],
-    "currentSpouse": null,
+    "currentSpouse": null
 }];
 
 function initSearch() {
@@ -365,7 +365,7 @@ function getChildren(personOfInterest) {
         }
         return children;
     }
-    
+
 function displayFamilyInfo() {
     var user = getInfo(getFirstNameParam(), getLastNameParam());
     var spouse = getSpouse(user);
@@ -427,29 +427,27 @@ function getOldestKinInfo() {
         console.log(oldestKin);
     }
 
-function filterCharacteristics(input) {
-    var termsArray = input.split(",");
-    var terms = {};
-    for (var i = 0; i < termsArray.length; i++) {
-        var term = termsArray[i];
-        var splitTerm = term.split('=');
-        var characteristic = splitTerm[0];
-        var characteristicValue = splitTerm[1];
-        terms[characteristic] = characteristicValue;
-    }
-    var filterCallback = function(user) {
-        for (var characteristic in terms) {
-            if (terms.hasOwnProperty(characteristic)) {
-                if (user[characteristic] != terms[characteristic]) {
-                    return false;
-                }
-            }
+function filterCharacteristics(query, everyPerson) {
+    return everyPerson.filter(function(person){
+        if (query.eyeColor!="" && query.eyeColor!=null && person.eyeColor != query.eyeColor){
+            return false;
         }
-        return true;
-    };
-    var users = dataObject.filter(filterCallback);
-    return users;
+        if (query.occupation!="" && query.occupation!=null && person.occupation != query.occupation){
+            return false;
+        }
+        if (query.age!="" && query.age!=null && person.age != query.age){
+            return false;
+        }
+        if (query.height!="" && query.height!=null && person.height != query.age){
+            return false;
+        }
+        if (query.weight!="" && query.weight!=null && person.weight != query.weight){
+            return false;
+        }
+    return true;
+  });
 }
+
 
 function getFilterCharacteristics() {
         var input = document.getElementById('characteristics');
@@ -457,14 +455,18 @@ function getFilterCharacteristics() {
         console.log(characteristicsResults);
     }
 
-initSearch(); 
+initSearch();
 
-function getOutputForPeople(people){
-    //create HTML output for one person (in getInfo)
-    return people.map(function(person){
-        return person.firstName + " " + person.lastName;
-}).toString();
-}
+
+
+
+
+// function getOutputForPeople(people){
+//     comment: create HTML output for one person (in getInfo)
+//     return people.map(function(person){
+//         return person.firstName + " " + person.lastName;
+// }).toString();
+// }
 
 // function display(output, elementId) {
 //     document.getElementById(elementId).innerHTML = "<p>" + output + "</p>";
@@ -479,8 +481,5 @@ function getOutputForPeople(people){
 //     "occupation" : "nurse",
 
 // if (person.eyeColor != query.eyeColor) {
-//     return false 
+//     return false
 // }
-
-
-
