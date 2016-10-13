@@ -428,6 +428,7 @@ function getOldestKinInfo() {
     }
 
 function filterCharacteristics(query, everyPerson) {
+    console.log(query);
     return everyPerson.filter(function(person){
         if (query.eyeColor!="" && query.eyeColor!=null && person.eyeColor != query.eyeColor){
             return false;
@@ -447,11 +448,15 @@ function filterCharacteristics(query, everyPerson) {
     return true;
     });
 
-function getAge(birthMonth, birthDay, birthYear) {
+function getAge(person) {
     var todayDate = new Date();
     var todayYear = todayDate.getFullYear();
     var todayMonth = todayDate.getMonth();
     var todayDay = todayDate.getDate();
+    var dob = person.dob.split("/");
+    var birthDay = dob[0];
+    var birthMonth = dob[1];
+    var birthYear = dob[2];
     age = todayYear - birthYear;
 
     if(todayMonth < birthMonth -1)
@@ -468,11 +473,20 @@ function getAge(birthMonth, birthDay, birthYear) {
     return age;
 }
 
+function getCharacteristicInput() {
+    var query = {
+        "eyeColor": document.getElementById("eyeColor").value,
+        "age": document.getElementById("age").value,
+        "height": document.getElementById("height").value,
+        "weight": document.getElementById("weight").value,
+        "occupation": document.getElementById("occupation").value 
+    }
+    return query;
+}
 
 function getFilterCharacteristics() {
-        var input = document.getElementById('characteristics');
-        var characteristicsResults = filterCharacteristics(input.value);
-        console.log(characteristicsResults);
+        var characteristicsResults = filterCharacteristics(getCharacteristicInput(),dataObject);
+        // console.log(characteristicsResults);
     }
 
 initSearch(); 
