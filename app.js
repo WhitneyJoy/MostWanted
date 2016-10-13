@@ -303,9 +303,7 @@ function getDescendants(personOfInterest) {
         if (user.parents.indexOf(parseInt(id)) > -1) {
             descendants.push(user);
             var userIdToCheck = user.id;
-            //TODO then retrieve THAT user's descendants
             var childDescendants = getDescendants(user);
-            //TODO concat childDescendants into descendants
             descendants = descendants.concat(childDescendants);
         }
     }
@@ -315,8 +313,6 @@ function getDescendants(personOfInterest) {
 function displayDescendants() {
     var allMyDesc = getDescendants(getInfo(getFirstNameParam(), getLastNameParam()));
     console.log(allMyDesc);
-    // display them here
-    // make sure it runs sync
 }
 
 function getParents(personOfInterest) {
@@ -327,7 +323,6 @@ function getParents(personOfInterest) {
     }
     var filterCallback = function(user) {
         var id = parseInt(user.id);
-        //indexOf grabs the key of the value or the position value
         return parentIds.indexOf(id) > -1;
     };
     return dataObject.filter(filterCallback);
@@ -370,23 +365,7 @@ function getChildren(personOfInterest) {
         }
         return children;
     }
-    // function getFamilyInfo() {
-    //     var allMyFam = getSpouse(getInfo(getFirstNameParam(),getLastNameParam()));
-    //     console.log(allMyFam);
-    // }
-    // function getFamilyInfo() {
-    //     var allMyFam = getParents(getInfo(getFirstNameParam(),getLastNameParam()));
-    //     console.log(allMyFam);
-    // }
-    // function getFamilyInfo() {
-    //     var allMyFam = getSiblings(getInfo(getFirstNameParam(),getLastNameParam()));
-    //     console.log(allMyFam);
-    // }
-    // function getFamilyInfo() {
-    //     var allMyFam = getChildren(getInfo(getFirstNameParam(),getLastNameParam()));
-    //     console.log(allMyFam);
-    // }
-
+    
 function displayFamilyInfo() {
     var user = getInfo(getFirstNameParam(), getLastNameParam());
     var spouse = getSpouse(user);
@@ -447,44 +426,27 @@ function getOldestKinInfo() {
         var oldestKin = getOldestKin(user);
         console.log(oldestKin);
     }
-    //input is what we need to run the function
 
 function filterCharacteristics(input) {
-    //you split their input by it finding the comma between what they type in
-    //whenever you use split it returns as an array
     var termsArray = input.split(",");
-    //terms is an empty object
     var terms = {};
-    //we are looping through the user input that was split into an array
     for (var i = 0; i < termsArray.length; i++) {
-        //term holds the position of whatever is iterating through the for loop
         var term = termsArray[i];
-        //this splits the current iteration postion by they equals by key = value
-        //and returns and array called splitTerm
         var splitTerm = term.split('=');
-        //this returns they first position/key of split term array
         var characteristic = splitTerm[0];
-        //this returns the second position/value of the split term array
         var characteristicValue = splitTerm[1];
-        //this is the objects key equals the value
         terms[characteristic] = characteristicValue;
     }
     var filterCallback = function(user) {
-        //     characteristic is they key and terms is the object
         for (var characteristic in terms) {
-            //         if object has key and what the user passes in as a 
-            //         key does not match with the object key it will return false
             if (terms.hasOwnProperty(characteristic)) {
                 if (user[characteristic] != terms[characteristic]) {
                     return false;
                 }
             }
         }
-        //if is able to loop through the whole object return true
         return true;
     };
-    //then the object filters and only returns what is found in the function
-    //and stored in the variable users and returns that
     var users = dataObject.filter(filterCallback);
     return users;
 }
@@ -494,25 +456,31 @@ function getFilterCharacteristics() {
         var characteristicsResults = filterCharacteristics(input.value);
         console.log(characteristicsResults);
     }
-    // function displayResults(resultsArr){
-    //     var results = " ";
-    //     for(var i =0; i < resultsArr; i++){
-    //     document.getElementById("displayArea").innerHTML = 
-    //     }
-    // }
-initSearch();
-//     var yourBirth = prompt("Do you know their date of birth?");
-//     var yourHeight = prompt("Do you know their height?");
-//     var yourWeight = prompt("Do you know their weight?");
-//     var yourEyeColor = prompt("Do you know their eye color?");
-//     var yourOccupation = prompt("Do you know their occupation?");
-//     var yourParents = prompt("Do you know their parents?");
-//to search traits use INPUT document.getElementbyId("eyeColor").value 
-//save into a variable 
-//recursion is when a function calls itself
-//Next of kin is returning one person(oldest)
-//function with an else/if statement- starting with children. var for oldest person 
-//and var for date (getFullYear in JS)
-//arrays are positions and objects are keys
-//function to validate traits- if it returns a true value for that object it gets passed into a new array
-//that's a filter for traits
+
+initSearch(); 
+
+function getOutputForPeople(people){
+    //create HTML output for one person (in getInfo)
+    return people.map(function(person){
+        return person.firstName + " " + person.lastName;
+}).toString();
+}
+
+// function display(output, elementId) {
+//     document.getElementById(elementId).innerHTML = "<p>" + output + "</p>";
+// }
+
+// function searchTraits(){
+//     return allPeople.filter(function(person){
+// }
+
+// var query = {
+//     "eyeColor" : "blue",
+//     "occupation" : "nurse",
+
+// if (person.eyeColor != query.eyeColor) {
+//     return false 
+// }
+
+
+
