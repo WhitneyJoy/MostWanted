@@ -9,7 +9,7 @@ var dataObject = [{
     "eyeColor": "brown",
     "occupation": "programmer",
     "parents": [],
-    "currentSpouse": "401222887"
+    "currentSpouse": "401222887",
 }, {
     "id": "401222887",
     "firstName": "Uma",
@@ -21,7 +21,7 @@ var dataObject = [{
     "eyeColor": "brown",
     "occupation": "assistant",
     "parents": [],
-    "currentSpouse": "272822514"
+    "currentSpouse": "272822514",
 }, {
     "id": "409574486",
     "firstName": "Michael",
@@ -261,7 +261,7 @@ var dataObject = [{
     "eyeColor": "blue",
     "occupation": "doctor",
     "parents": [313207561, 313997561],
-    "currentSpouse": null
+    "currentSpouse": null,
 }];
 
 function initSearch() {
@@ -365,7 +365,7 @@ function getChildren(personOfInterest) {
         }
         return children;
     }
-
+    
 function displayFamilyInfo() {
     var user = getInfo(getFirstNameParam(), getLastNameParam());
     var spouse = getSpouse(user);
@@ -431,7 +431,7 @@ function filterCharacteristics(query, everyPerson) {
     return everyPerson.filter(function(person){
         if (query.eyeColor!="" && query.eyeColor!=null && person.eyeColor != query.eyeColor){
             return false;
-        }
+        } 
         if (query.occupation!="" && query.occupation!=null && person.occupation != query.occupation){
             return false;
         }
@@ -445,8 +445,26 @@ function filterCharacteristics(query, everyPerson) {
             return false;
         }
     return true;
-  });
+    }
+
+function getAge(person) {
+    var birthday = person.dob;
+    var dob = birthday.split('/');
+    //have to pull out day and month separately to add to our if statement 
+    var today = new Date();
+    var age = today.getFullYear() - dob[0];
+    if ( != today.getDay())
+    // var dd = today.getDay();
+    // var mm = today.getMonth();
+
+    // more here
+    return age;
 }
+
+parseInt dob separated by slashes
+separate the day month and year 
+
+
 
 
 function getFilterCharacteristics() {
@@ -455,7 +473,7 @@ function getFilterCharacteristics() {
         console.log(characteristicsResults);
     }
 
-initSearch();
+initSearch(); 
 
 
 
@@ -481,5 +499,8 @@ initSearch();
 //     "occupation" : "nurse",
 
 // if (person.eyeColor != query.eyeColor) {
-//     return false
+//     return false 
 // }
+
+
+
