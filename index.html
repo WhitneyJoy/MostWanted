@@ -47,73 +47,81 @@
       <h5 class="center">Enter your search below</h5>
       <div class="container">
         <div class="section">
-          <form id="form" name="form" role="form">
-            <div>
-              <label class="labelForm">First Name:</label> <input id="firstName"
-              placeholder="First Name" type="first">
-            </div>
-            <div>
-              <label class="labelForm">Last Name:</label> <input id="lastName"
-              placeholder="Last Name" type="last">
-            </div>
-            <div>
-              <button class="btn formMargin" onclick="getInfo(getFirstNameParam(),getLastNameParam())" type="button">Get
-              Personal Info</button>
-              <button type="button" class="btn" onclick="displayDescendants()">Get Descendant Info</button> 
-            </div><br>
-            <div>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input class="validate" id="firstName" placeholder="Placeholder" type=
+                  "text"> <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input class="validate" id="lastName" type="text"> <label for=
+                  "last_name">Last Name</label>
+                </div>
+                <div>
+                  <button class="waves-effect waves-light btn" onclick=
+                  "getInfo(getFirstNameParam(),getLastNameParam())" type="button">Get
+                  Personal Info</button> <button class="waves-effect waves-light btn"
+                  onclick="displayDescendants()" type="button">Get Descendant
+                  Info</button>
+                </div><br>
+              </div>
+            </form>
+          </div>
+          <div>
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                <h5 class="center">Detail your search below</h5><button class=
+                "waves-effect waves-light btn" onclick="displayFamilyInfo()" type=
+                "button">Get Family Info</button>
+              </div><button class="waves-effect waves-light btn" onclick=
+              "getOldestKinInfo()" type="button">Get Next Of Kin</button>
               <div class="col s12 m4">
                 <div class="icon-block">
                   <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-                  <h5 class="center">Detail your search below</h5>
-                   <button type="button" class="btn" onclick="displayFamilyInfo()">Get Family Info</button> 
-                 <!--  <a class='dropdown-button btn' data-activates='dropdown1' href='#'>Get Family Info</a> -->
-                 <!--  <ul class='dropdown-content' id='dropdown1'> -->
-                   <!--  <li><button type = "button" onclick="getFamilyInfo()">Get Parent Info</button></li>
-                    <li><button type = "button" onclick="getFamilyInfo()">Get Spouse Info</button></li>
-                    <li><button type = "button" onclick="getFamilyInfo()">Get Sibling Info</button></li>
-                    <li><button type = "button" onclick="getFamilyInfo()">Get Children Info</button></li> -->
-                 <!--  </ul> -->
-                </div><button type="button" class="dropdown-button btn" onclick="getOldestKinInfo()">Get
-                Next Of Kin</button>
-                <div class="col s12 m4">
-                  <div class="icon-block">
-                    <h2 class="center brown-text"><i class=
-                    "material-icons">group</i></h2>
-                    <h5 class="center">Search and filter</h5>
-                     <form id="form" name="form" role="form">
-                      <div>
-                        <label class="labelForm">Characteristics:</label> <input class="characteristics" id="characteristics" placeholder="key=value,key=value" type="characteristicsText">
-                        <button type="button" class="btn" onclick="getFilterCharacteristics()">Search
-                        and Filter</button><br>
+                  <h5 class="center">Search and filter</h5>
+                  <div class="row">
+                    <form class="col s12">
+                      <div class="row">
+                        <div class="input-field col s6">
+                          <input class="validate" id="characteristics" placeholder=
+                          "key=value,key=value" type="text"> <label for=
+                          "characteristics">Characteristics</label>
+                        </div>
+                        <div>
+                          <button class="waves-effect waves-light btn" onclick=
+                          "getFilterCharacteristics()" type="button">Seach and
+                          Filter</button>
+                        </div><br>
                       </div>
                     </form>
-                    <footer class="page-footer teal">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col l6 s12"></div>
-                        </div>
-                      </div>
-                      <div class="footer-copyright">
-                        <div class="container">
-                          Made by <a class="brown-text text-lighten-3" href=
-                          "http://materializecss.com">Materialize</a>
-                        </div>
-                      </div>
-                    </footer><!--  Scripts-->
-                    <script src="https://code.jquery.com/jquery-2.1.1.min.js">
-                    </script> 
-                    <script src="js/materialize.js">
-                    </script> 
-                    <script src="js/init.js">
-                    </script> 
-                    <script src="app.js">
-                    </script> 
                   </div>
                 </div>
               </div>
             </div>
-          </form>
+          </div>
+          <footer class="page-footer teal">
+            <div class="container">
+              <div class="row">
+                <div class="col l6 s12"></div>
+              </div>
+            </div>
+            <div class="footer-copyright">
+              <div class="container">
+                Made by <a class="brown-text text-lighten-3" href=
+                "http://materializecss.com">Materialize</a>
+              </div>
+            </div>
+          </footer><!--  Scripts-->
+          <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+          </script> 
+          <script src="js/materialize.js">
+          </script> 
+          <script src="js/init.js">
+          </script> 
+          <script src="app.js">
+          </script>
         </div>
       </div>
     </div>
