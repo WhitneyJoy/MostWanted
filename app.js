@@ -427,53 +427,45 @@ function getOldestKinInfo() {
         console.log(oldestKin);
     }
 
-function filterCharacteristics(query, everyPerson) {
-    return everyPerson.filter(function(person){
-        if (query.eyeColor!="" && query.eyeColor!=null && person.eyeColor != query.eyeColor){
-            return false;
-        } 
-        if (query.occupation!="" && query.occupation!=null && person.occupation != query.occupation){
-            return false;
-        }
-        if (query.age!="" && query.age!=null && person.age != query.age){
-            return false;
-        }
-        if (query.height!="" && query.height!=null && person.height != query.age){
-            return false;
-        }
-        if (query.weight!="" && query.weight!=null && person.weight != query.weight){
-            return false;
-        }
-    return true;
-    }
+// function filterCharacteristics(query, everyPerson) {
+//     return everyPerson.filter(function(person){
+//         if (query.eyeColor!="" && query.eyeColor!=null && person.eyeColor != query.eyeColor){
+//             return false;
+//         } 
+//         if (query.occupation!="" && query.occupation!=null && person.occupation != query.occupation){
+//             return false;
+//         }
+//         if (query.age!="" && query.age!=null && person.age != query.age){
+//             return false;
+//         }
+//         if (query.height!="" && query.height!=null && person.height != query.age){
+//             return false;
+//         }
+//         if (query.weight!="" && query.weight!=null && person.weight != query.weight){
+//             return false;
+//         }
+//     return true;
+//     }
 
 function getAge(person) {
-    var birthday = person.dob;
-    var dob = birthday.split('/');
-    //have to pull out day and month separately to add to our if statement 
+    var birthday = new Date(person.dob);
     var today = new Date();
-    var age = today.getFullYear() - dob[0];
-    if ( != today.getDay())
-    // var dd = today.getDay();
-    // var mm = today.getMonth();
-
-    // more here
+    var bdayTimestamp = birthday.getTime() / 1000;
+    var bdayTimestamp = today.getTime() / 1000;
+    var difference = todayTimestamp - bdayTimestamp;
+    var age = Math.floor(difference / (3600 * 24 * 365));
+    console.log(age);
     return age;
 }
 
-parseInt dob separated by slashes
-separate the day month and year 
 
+// function getFilterCharacteristics() {
+//         var input = document.getElementById('characteristics');
+//         var characteristicsResults = filterCharacteristics(input.value);
+//         console.log(characteristicsResults);
+//     }
 
-
-
-function getFilterCharacteristics() {
-        var input = document.getElementById('characteristics');
-        var characteristicsResults = filterCharacteristics(input.value);
-        console.log(characteristicsResults);
-    }
-
-initSearch(); 
+// initSearch(); 
 
 
 
