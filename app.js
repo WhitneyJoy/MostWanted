@@ -427,45 +427,55 @@ function getOldestKinInfo() {
         console.log(oldestKin);
     }
 
-// function filterCharacteristics(query, everyPerson) {
-//     return everyPerson.filter(function(person){
-//         if (query.eyeColor!="" && query.eyeColor!=null && person.eyeColor != query.eyeColor){
-//             return false;
-//         } 
-//         if (query.occupation!="" && query.occupation!=null && person.occupation != query.occupation){
-//             return false;
-//         }
-//         if (query.age!="" && query.age!=null && person.age != query.age){
-//             return false;
-//         }
-//         if (query.height!="" && query.height!=null && person.height != query.age){
-//             return false;
-//         }
-//         if (query.weight!="" && query.weight!=null && person.weight != query.weight){
-//             return false;
-//         }
-//     return true;
-//     }
+function filterCharacteristics(query, everyPerson) {
+    return everyPerson.filter(function(person){
+        if (query.eyeColor!="" && query.eyeColor!=null && person.eyeColor != query.eyeColor){
+            return false;
+        } 
+        if (query.occupation!="" && query.occupation!=null && person.occupation != query.occupation){
+            return false;
+        }
+        if (query.age!="" && query.age!=null && getAge(person) != query.age){
+            return false;
+        }
+        if (query.height!="" && query.height!=null && person.height != query.age){
+            return false;
+        }
+        if (query.weight!="" && query.weight!=null && person.weight != query.weight){
+            return false;
+        }
+    return true;
+    });
 
-function getAge(person) {
-    var birthday = new Date(person.dob);
-    var today = new Date();
-    var bdayTimestamp = birthday.getTime() / 1000;
-    var bdayTimestamp = today.getTime() / 1000;
-    var difference = todayTimestamp - bdayTimestamp;
-    var age = Math.floor(difference / (3600 * 24 * 365));
+function getAge(birthMonth, birthDay, birthYear) {
+    var todayDate = new Date();
+    var todayYear = todayDate.getFullYear();
+    var todayMonth = todayDate.getMonth();
+    var todayDay = todayDate.getDate();
+    age = todayYear - birthYear;
+
+    if(todayMonth < birthMonth -1)
+    {
+        age--;
+    }
+    if(birthMonth -1 == todayMonth && todayDay < birthDay)
+    {
+        age--;
+    }
+    return age;
+}
     console.log(age);
     return age;
 }
 
 
-// function getFilterCharacteristics() {
-//         var input = document.getElementById('characteristics');
-//         var characteristicsResults = filterCharacteristics(input.value);
-//         console.log(characteristicsResults);
-//     }
+function getFilterCharacteristics() {
+        var input = document.getElementById('characteristics');
+        var characteristicsResults = filterCharacteristics(input.value);
+        console.log(characteristicsResults);
+    }
 
-// initSearch(); 
+initSearch(); 
 
 
 
