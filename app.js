@@ -305,7 +305,6 @@ function getInfo(firstName,lastName){
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
         if (user.firstName.toLowerCase() === firstName.toLowerCase() && user.lastName.toLowerCase() === lastName.toLowerCase()) {
-            console.log(user);
             return user;
         }
     }
@@ -332,16 +331,13 @@ function getDescendants(personOfInterest){
 
 function displayDescendants(){
     var allMyDesc = getDescendants(getInfo(getFirstNameParam(),getLastNameParam()));
-    console.log(allMyDesc);
     // display them here
     // make sure it runs sync
 }
 
 function getParents(personOfInterest){
     var motherAndFather = [];
-    console.log(personOfInterest);
     var parentIds = personOfInterest.parents;
-    console.log(parentIds);
     if(parentIds.length == 0){
         return [];
     }
@@ -355,12 +351,15 @@ function getParents(personOfInterest){
 
 function getSpouse(personOfInterest){
     if(personOfInterest.currentSpouse){
+        console.log(personOfInterest.currentSpouse);
         for (var i = 0; i < dataObject.length; i++) {
-            if (personOfInterest.currentSpouse == dataObject[i].id){
+            console.log(dataObject[i].id);
+            if (personOfInterest.currentSpouse == parseInt(dataObject[i].id)){
                 return dataObject[i];
             }
         }
     }
+    return null;
 }
 
 function getSiblings(personOfInterest){
@@ -399,10 +398,10 @@ function getChildren(personOfInterest){
 //     console.log(allMyFam);
 // }
 
-function getFamilyInfo() {
-    var allMyFam = getSiblings(getInfo(getFirstNameParam(),getLastNameParam()));
-    console.log(allMyFam);
-}
+// function getFamilyInfo() {
+//     var allMyFam = getSiblings(getInfo(getFirstNameParam(),getLastNameParam()));
+//     console.log(allMyFam);
+// }
 
 // function getFamilyInfo() {
 //     var allMyFam = getChildren(getInfo(getFirstNameParam(),getLastNameParam()));
@@ -411,34 +410,69 @@ function getFamilyInfo() {
 
 
 function displayFamilyInfo() {
+    var user = getInfo(getFirstNameParam(), getLastNameParam());
+    var spouse = getSpouse(user);
+    var parents = getParents(user);
+    var siblings = getSiblings(user);
+    var children = getChildren(user);
+    console.log("USER");
+    console.log(user);
+    console.log("SPOUSE");
+    console.log(spouse);
+    console.log("PARENTS");
+    console.log(parents);
+    console.log("SIBLINGS");
+    console.log(siblings);
+    console.log("CHILDREN");
+    console.log(children);
+    // document.querySelector('p.spouse').innerHTML = spouse.firstName;
+}
+function getOldestKin(person){
+    var kin = [];
+
+    var spouse = getSpouse(person);
+    console.log('spouse');
+    console.log(spouse);
+    if (spouse !== null) {
+        kin.push(spouse);
+    }
+
+    console.log('children');
+    var children = getChildren(person);
+    console.log(children);
+    children.forEach(function (child) {
+        kin.push(child);
+    });
+
+    console.log('parents');
+    var parents = getParents(person);
+    console.log(parents);
+    parents.forEach(function (parent) {
+        kin.push(parent);
+    });
+
+    var oldest = null;
+    if (kin.length > 0) {  
+        oldest = kin[0];
+        console.log(oldest);
+        for(var i = 0; i < kin.length; i++) {
+            var checkedKin = kin[i];
+            var oldestBirthday = new Date(oldest.dob);
+            var birthday = new Date(checkedKin.dob);
+            if (birthday < oldestBirthday) {
+                oldest = person;
+            }
+        }
+    }
+    return oldest;
 
 }
-// function getOldestKin(person){
-//     var kin = [];
-//     var spouse = getSpouse(parent.id);
-//     kin.push(spouse);
-//     var children =getChildren(person.id);
-//     children.forEach(function (child) {
-//         kin.push(child);
-//     });
-//     var parents =getParents(parents.id);
-//     parents.forEach(function (parent) {
-//         kin.push(parent);
-//     });
 
-//     var oldest= kin[0];
-//     for(var i = 0; i < kin.length; i++) {
-//         var person = kin[i];
-//         var oldestBirthday = new Date(oldest.dob);
-//         var birthday = new Date(person.dob);
-//         if (birthday < oldestBirthday) {
-//             oldest = person;
-//         }
-//     }
-
-// }
-//     return oldest;
-// }
+function getOldestKinInfo() {
+    var user = getInfo(getFirstNameParam(), getLastNameParam());
+    var oldestKin = getOldestKin(user);
+    console.log(oldestKin);
+}
 
 //input is what we need to run the function
 // function filterCharacteristics(input){

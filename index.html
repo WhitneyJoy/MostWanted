@@ -66,14 +66,15 @@
                 <div class="icon-block">
                   <h2 class="center brown-text"><i class="material-icons">group</i></h2>
                   <h5 class="center">Detail your search below</h5>
-                  <a class='dropdown-button btn' data-activates='dropdown1' href='#'>Get Family Info</a>
+                   <button type="button" class="btn" onclick="displayFamilyInfo()">Get Family Info</button> 
+                 <!--  <a class='dropdown-button btn' data-activates='dropdown1' href='#'>Get Family Info</a> -->
                  <!--  <ul class='dropdown-content' id='dropdown1'> -->
-                    <li><button type = "button" onclick="getFamilyInfo()">Get Parent Info</button></li>
+                   <!--  <li><button type = "button" onclick="getFamilyInfo()">Get Parent Info</button></li>
                     <li><button type = "button" onclick="getFamilyInfo()">Get Spouse Info</button></li>
                     <li><button type = "button" onclick="getFamilyInfo()">Get Sibling Info</button></li>
-                    <li><button type = "button" onclick="getFamilyInfo()">Get Children Info</button></li>
+                    <li><button type = "button" onclick="getFamilyInfo()">Get Children Info</button></li> -->
                  <!--  </ul> -->
-                </div><button class="dropdown-button btn" onclick="myFunction()">Get
+                </div><button type="button" class="dropdown-button btn" onclick="getOldestKinInfo()">Get
                 Next Of Kin</button>
                 <div class="col s12 m4">
                   <div class="icon-block">
@@ -86,23 +87,7 @@
                         type="eye color" value="Eye Color">
                       </div>
                       <div>
-                        <label class="labelForm">Height:</label> <input class="Height"
-                        type="height" value="Height">
-                      </div>
-                      <div>
-                        <label class="labelForm">Weight:</label> <input class="Weight"
-                        type="last" value="Weight">
-                      </div>
-                      <div>
-                        <label class="labelForm">Gender:</label> <input class="Gender"
-                        type="gender" value="Gender">
-                      </div>
-                      <div>
-                        <label class="labelForm">Work:</label> <input class="Occupation"
-                        type="occupation" value="Occupation">
-                      </div>
-                      <div>
-                        <button class="dropdown-button btn" onclick="myFunction()">Search
+                        <button type="button" class="btn" onclick="myFunction()">Search
                         and Filter</button><br>
                       </div>
                     </form>
