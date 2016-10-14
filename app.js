@@ -264,16 +264,6 @@ var dataObject = [{
     "currentSpouse": null,
 }];
 
-function initSearch() {
-    var answer = "";
-    var firstName = "";
-    var lastName = "";
-    var personalId = "";
-    var lookingFor = "";
-    var characteristic = "";
-    var characteristics = [];
-}
-
 function getFirstNameParam() {
     return document.getElementById("firstName").value;
 }
@@ -282,19 +272,11 @@ function getLastNameParam() {
     return document.getElementById("lastName").value;
 }
 
-// function printToPage(){
-//     var htmlOutput = "<h1></h1>";
-//     htmlOutput += "<p></p>";
-//     htmlOutput += "button";
-//     document.getElementById("id").innherHTML = htmlOutput;
-// }
-
 function getInfo(firstName, lastName) {
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
         if (user.firstName.toLowerCase() === firstName.toLowerCase() && user.lastName
             .toLowerCase() === lastName.toLowerCase()) {
-            console.log(user);
             return user;
         }
     }
@@ -343,9 +325,7 @@ function getParents(personOfInterest) {
 
 function getSpouse(personOfInterest) {
     if (personOfInterest.currentSpouse) {
-        console.log(personOfInterest.currentSpouse);
         for (var i = 0; i < dataObject.length; i++) {
-            console.log(dataObject[i].id);
             if (personOfInterest.currentSpouse == parseInt(dataObject[i].id)) {
                 return dataObject[i];
             }
@@ -376,7 +356,7 @@ function getChildren(personOfInterest) {
                 children.push(dataObject[i]);
             }
         }
-        return children;
+    return children;
     }
     
 function displayFamilyInfo() {
@@ -385,63 +365,46 @@ function displayFamilyInfo() {
     var parents = getParents(user);
     var siblings = getSiblings(user);
     var children = getChildren(user);
-    console.log("USER");
-    console.log(user);
-    console.log("SPOUSE");
-    console.log(spouse);
-    console.log("PARENTS");
-    console.log(parents);
-    console.log("SIBLINGS");
-    console.log(siblings);
-    console.log("CHILDREN");
-    console.log(children);
     // document.querySelector('p.spouse').innerHTML = spouse.firstName;
 }
 
 function getOldestKin(person) {
     var kin = [];
     var spouse = getSpouse(person);
-    console.log('spouse');
-    console.log(spouse);
     if (spouse !== null) {
         kin.push(spouse);
     }
-    console.log('children');
     var children = getChildren(person);
-    console.log(children);
     children.forEach(function(child) {
         kin.push(child);
     });
-    console.log('parents');
     var parents = getParents(person);
-    console.log(parents);
     parents.forEach(function(parent) {
         kin.push(parent);
     });
+
     var oldest = null;
     if (kin.length > 0) {
         oldest = kin[0];
-        console.log(oldest);
         for (var i = 0; i < kin.length; i++) {
             var checkedKin = kin[i];
             var oldestBirthday = new Date(oldest.dob);
             var birthday = new Date(checkedKin.dob);
             if (birthday < oldestBirthday) {
-                oldest = person;
+                oldest = checkedKin;
             }
         }
     }
+    console.log(oldest);
     return oldest;
 }
 
 function getOldestKinInfo() {
         var user = getInfo(getFirstNameParam(), getLastNameParam());
         var oldestKin = getOldestKin(user);
-        console.log(oldestKin);
     }
 
 function filterCharacteristics(query, everyPerson) {
-    console.log(query);
     var filterResults = everyPerson.filter(function(person){
         if (query.eyeColor!="" && query.eyeColor!=null && person.eyeColor != query.eyeColor){
             return false;
@@ -460,7 +423,6 @@ function filterCharacteristics(query, everyPerson) {
         }
     return true;
     });
-    console.log(filterResults);
     return filterResults;
 }
 
@@ -498,38 +460,42 @@ function getCharacteristicInput() {
 }
 
 function getFilterCharacteristics() {
-        var characteristicsResults = filterCharacteristics(getCharacteristicInput(),dataObject);
-        // console.log(characteristicsResults);
+    var characteristicsResults = filterCharacteristics(getCharacteristicInput(),dataObject);
+    // console.log(characteristicsResults);
     }
 
-initSearch(); 
+function display(output, elementId) {
+    document.getElementById(elementId).innerHTML = "<h4>" + output.firstName + " " + output.lastName + "</h4>";
+}
 
 
 
 
 
-// function getOutputForPeople(people){
-//     comment: create HTML output for one person (in getInfo)
-//     return people.map(function(person){
-//         return person.firstName + " " + person.lastName;
-// }).toString();
-// }
 
-// function display(output, elementId) {
-//     document.getElementById(elementId).innerHTML = "<p>" + output + "</p>";
-// }
 
-// function searchTraits(){
-//     return allPeople.filter(function(person){
-// }
 
-// var query = {
-//     "eyeColor" : "blue",
-//     "occupation" : "nurse",
 
-// if (person.eyeColor != query.eyeColor) {
-//     return false 
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

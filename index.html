@@ -48,54 +48,6 @@
       <div class="container">
         <div class="section">
           <div class="row">
-<!--             <form class="col s12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input class="validate" id="firstName" type=
-                  "text"> <label for="first_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                  <input class="validate" id="lastName" type="text"> <label for=
-                  "last_name">Last Name</label>
-                </div>
-                <div>
-                  <button class="waves-effect waves-light btn" onclick=
-                  "getInfo(getFirstNameParam(),getLastNameParam())" type="button">Get
-                  Personal Info</button> <button class="waves-effect waves-light btn"
-                  onclick="displayDescendants()" type="button">Get Descendant
-                  Info</button>
-                </div><br>
-              </div>
-            </form>
-          </div>
-          <div>
-            <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-                <h5 class="center">Detail your search below</h5><button class=
-                "waves-effect waves-light btn" onclick="displayFamilyInfo()" type=
-                "button">Get Family Info</button>
-              </div><button class="waves-effect waves-light btn" onclick=
-              "getOldestKinInfo()" type="button">Get Next Of Kin</button>
-              <div class="col s12 m4">
-                <div class="icon-block">
-                  <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-                  <h5 class="center">Search and filter</h5>
-                  <div class="row">
-                    <form class="col s12">
-                      <div class="row">
-                        <div class="input-field col s6">
-                          <input class="validate" id="characteristics" placeholder=
-                          "key=value,key=value" type="text"> <label for=
-                          "characteristics">Characteristics</label>
-                        </div>
-                        <div>
-                          <button class="waves-effect waves-light btn" onclick=
-                          "getFilterCharacteristics()" type="button">Seach and
-                          Filter</button>
-                        </div><br>
-                      </div>
-                    </form> -->
                     <form class="col s12">
               <div class="row">
                 <div class="input-field col s6">
@@ -111,7 +63,7 @@
                 <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Search Options</a>
                 <ul id='dropdown1' class='dropdown-content'>
                   <li>
-                    <button class="waves-effect waves-light btn" onclick="getInfo(getFirstNameParam(),getLastNameParam())" id = "id" type="button">Personal</button> 
+                    <button class="waves-effect waves-light btn" onclick="display(getInfo(getFirstNameParam(),getLastNameParam()), 'printArea')" type="button">Personal</button> 
                   </li>
                   <li>
                     <button class="waves-effect waves-light btn"onclick="displayDescendants()" type="button">Descendant</button>
@@ -132,11 +84,11 @@
                 </div>
                 <div class="input-field col s6">
                   <input class="validate" id="weight" type="text"> <label for=
-                  "last_name">Weight</label>
+                  "last_name">Weight in pounds</label>
                 </div>
                 <div class="input-field col s6">
                   <input class="validate" id="height" type="text"> <label for=
-                  "last_name">Height</label>
+                  "last_name">Height in inches</label>
                 </div>
                 <div class="input-field col s6">
                   <input class="validate" id="occupation" type="text"> <label for=
@@ -150,6 +102,9 @@
                   <button class="waves-effect waves-light btn" onclick="getFilterCharacteristics()" type="button">Seach and Filter</button>
                 </div><br>
               </div>
+
+            <div id="printArea" ></div>
+              
             </form>
                   </div>
                 </div>
