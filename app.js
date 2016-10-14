@@ -282,6 +282,13 @@ function getLastNameParam() {
     return document.getElementById("lastName").value;
 }
 
+// function printToPage(){
+//     var htmlOutput = "<h1></h1>";
+//     htmlOutput += "<p></p>";
+//     htmlOutput += "button";
+//     document.getElementById("id").innherHTML = htmlOutput;
+// }
+
 function getInfo(firstName, lastName) {
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
@@ -301,11 +308,17 @@ function getDescendants(personOfInterest) {
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
         if (user.parents.indexOf(parseInt(id)) > -1) {
+            console.log("user " + user.id + " is descendant!");
             descendants.push(user);
             var userIdToCheck = user.id;
             var childDescendants = getDescendants(user);
-            descendants = descendants.concat(childDescendants);
+            if (childDescendants) {
+                descendants = descendants.concat(childDescendants);
+            }
         }
+    }
+    if(descendants.length === 0){
+        return false;
     }
     return descendants;
 }
@@ -429,7 +442,7 @@ function getOldestKinInfo() {
 
 function filterCharacteristics(query, everyPerson) {
     console.log(query);
-    return everyPerson.filter(function(person){
+    var filterResults = everyPerson.filter(function(person){
         if (query.eyeColor!="" && query.eyeColor!=null && person.eyeColor != query.eyeColor){
             return false;
         } 
@@ -447,6 +460,9 @@ function filterCharacteristics(query, everyPerson) {
         }
     return true;
     });
+    console.log(filterResults);
+    return filterResults;
+}
 
 function getAge(person) {
     var todayDate = new Date();
@@ -467,9 +483,6 @@ function getAge(person) {
     {
         age--;
     }
-    return age;
-}
-    console.log(age);
     return age;
 }
 
