@@ -25,11 +25,9 @@
   <div class="parallax-container" id="index-banner">
     <div class="section no-pad-bot">
       <div class="container">
-        <br>
-        <br>
         <h1 class="header center teal-text text-lighten-2">Most Wanted</h1>
         <div class="row center">
-          <h5 class="header col s12">Who are you gunna call?</h5>
+          <h5 class="header col s12 shadow">Who are you gunna call?</h5>
         </div>
         <div class="row center">
           <a class="" href="http://materializecss.com/getting-started.html" id=
@@ -43,98 +41,110 @@
   </div>
   <div class="col s12 m4">
     <div class="icon-block">
-      <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-      <h5 class="center">Enter your search below</h5>
+      <h2 class="center brown-text enterYourSearchPaddingTop"><i class=
+      "material-icons">group</i></h2>
+      <h5 class="center enterYourSearchPaddingBottom">Enter your search below</h5>
       <div class="container">
         <div class="section">
           <div class="row">
-                    <form class="col s12">
+            <form class="col s12">
               <div class="row">
                 <div class="input-field col s6">
-                  <input class="validate" id="firstName" type=
-                  "text"> <label for="first_name">First Name</label>
+                  <input class="validate" id="firstName" type="text"> <label for=
+                  "first_name">First Name</label>
                 </div>
                 <div class="input-field col s6">
                   <input class="validate" id="lastName" type="text"> <label for=
                   "last_name">Last Name</label>
-                </div>
-                <div>
-                    <!-- Dropdown Trigger -->
-                <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Search Options</a>
-                <ul id='dropdown1' class='dropdown-content'>
-                  <li>
-                    <button class="waves-effect waves-light btn" onclick="display(getInfo(getFirstNameParam(),getLastNameParam()), 'printArea')" type="button">Personal</button> 
-                  </li>
-                  <li>
-                    <button class="waves-effect waves-light btn"onclick="displayDescendants()" type="button">Descendant</button>
-                  </li>
-                  <li>
-                    <button class="waves-effect waves-light btn" onclick="displayFamilyInfo()" type=
-                    "button">Family</button>
-                  </li>
-                  <li>
-                    <button class="waves-effect waves-light btn" onclick="getOldestKinInfo()" type="button">Next Of Kin</button>
-                  </li>
-<!--                   <li class="divider"></li>
-                  <li><a href="#!">three</a></li> -->
-                </ul>
-                <div class="input-field col s6">
-                  <input class="validate" id="eyeColor" type="text"> <label for=
-                  "last_name">Eye Color</label>
-                </div>
-                <div class="input-field col s6">
-                  <input class="validate" id="weight" type="text"> <label for=
-                  "last_name">Weight in pounds</label>
-                </div>
-                <div class="input-field col s6">
-                  <input class="validate" id="height" type="text"> <label for=
-                  "last_name">Height in inches</label>
-                </div>
-                <div class="input-field col s6">
-                  <input class="validate" id="occupation" type="text"> <label for=
-                  "last_name">Occupation</label>
-                </div>
-                <div class="input-field col s6">
-                  <input class="validate" id="age" type="text"> <label for=
-                  "last_name">Age</label>
-                </div>
-                <div>
-                  <button class="waves-effect waves-light btn" onclick="getFilterCharacteristics()" type="button">Seach and Filter</button>
                 </div><br>
-              </div>
-
-            <div id="printArea" ></div>
-              
-            </form>
+                <br>
+                <div>
+                  <div class="searchOptionsButton">
+                    <a class='dropdown-button btn' data-activates='dropdown1' href=
+                    '#'>Search Options</a>
                   </div>
+                  <ul class='dropdown-content' id='dropdown1'>
+                    <li>
+                      <button class="waves-effect waves-light btn" onclick=
+                      "display(getInfo(getFirstNameParam(),getLastNameParam()), 'printArea')"
+                      type="button">Personal Info</button>
+                    </li>
+                    <li>
+                      <button class="waves-effect waves-light btn" onclick=
+                      "displayMultiple(displayDescendants(), 'printArea')" type=
+                      "button">Descendants</button>
+                    </li>
+                    <li>
+                      <button class="waves-effect waves-light btn" onclick=
+                      "displayMultiple(displayFamilyInfo(), 'printArea')" type=
+                      "button">Family Info</button>
+                    </li>
+                    <li>
+                      <button class="waves-effect waves-light btn" onclick=
+                      "display(getOldestKinInfo(), 'printArea')" type="button">Next Of
+                      Kin</button>
+                    </li>
+                  </ul>
+                  <br>
+                  <div class="input-field col s6">
+                    <input class="validate" id="eyeColor" type="text"> <label for=
+                    "last_name">Eye Color</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input class="validate" id="weight" type="text"> <label for=
+                    "last_name">Weight in pounds</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input class="validate" id="height" type="text"> <label for=
+                    "last_name">Height in inches</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input class="validate" id="occupation" type="text"> <label for=
+                    "last_name">Occupation</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input class="validate" id="age" type="text"> <label for=
+                    "last_name">Age</label>
+                  </div>
+                  <div class="input-field col s6"></div>
+                  <div>
+                    <div>
+                      <div class="searchFilterButton">
+                        <button class="waves-effect waves-light btn" onclick=
+                        "displayMultiple(getFilterCharacteristics(), 'printArea')" type=
+                        "button">Seach and Filter</button>
+                      </div>
+                    </div>
+                  </div><br>
                 </div>
+                <div id="printArea"></div>
               </div>
-            </div>
+            </form>
           </div>
-          <footer class="page-footer teal">
-            <div class="container">
-              <div class="row">
-                <div class="col l6 s12"></div>
-              </div>
-            </div>
-            <div class="footer-copyright">
-              <div class="container">
-                Made by <a class="brown-text text-lighten-3" href=
-                "http://materializecss.com">Materialize</a>
-              </div>
-            </div>
-          </footer><!--  Scripts-->
-          <script src="https://code.jquery.com/jquery-2.1.1.min.js">
-          </script> 
-          <script src="js/materialize.js">
-          </script> 
-          <script src="js/init.js">
-          </script> 
-          <script src="app.js">
-          </script>
         </div>
       </div>
     </div>
   </div>
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12"></div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Made by <a class="brown-text text-lighten-3" href=
+        "http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script> 
+  <script src="js/materialize.js">
+  </script> 
+  <script src="js/init.js">
+  </script> 
+  <script src="app.js">
+  </script> 
 </body>
 </html>

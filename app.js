@@ -290,7 +290,6 @@ function getDescendants(personOfInterest) {
     for (var i = 0; i < dataObject.length; i++) {
         var user = dataObject[i];
         if (user.parents.indexOf(parseInt(id)) > -1) {
-            console.log("user " + user.id + " is descendant!");
             descendants.push(user);
             var userIdToCheck = user.id;
             var childDescendants = getDescendants(user);
@@ -306,8 +305,7 @@ function getDescendants(personOfInterest) {
 }
 
 function displayDescendants() {
-    var allMyDesc = getDescendants(getInfo(getFirstNameParam(), getLastNameParam()));
-    console.log(allMyDesc);
+    return getDescendants(getInfo(getFirstNameParam(), getLastNameParam()));
 }
 
 function getParents(personOfInterest) {
@@ -360,12 +358,32 @@ function getChildren(personOfInterest) {
     }
     
 function displayFamilyInfo() {
+    var family =[];
     var user = getInfo(getFirstNameParam(), getLastNameParam());
     var spouse = getSpouse(user);
     var parents = getParents(user);
     var siblings = getSiblings(user);
     var children = getChildren(user);
-    // document.querySelector('p.spouse').innerHTML = spouse.firstName;
+    //TODO ensure family member is not null
+    // family.push(user);
+    if (spouse) {
+        family.push(spouse);
+    }
+
+    parents.forEach(function (parent) {
+        family.push(parent);
+    });
+
+    siblings.forEach(function (sibling) {
+        family.push(sibling);
+
+    }); 
+
+    children.forEach(function (child) {
+        family.push(child)
+    });
+    console.log(family);
+    return family;
 }
 
 function getOldestKin(person) {
@@ -392,16 +410,17 @@ function getOldestKin(person) {
             var birthday = new Date(checkedKin.dob);
             if (birthday < oldestBirthday) {
                 oldest = checkedKin;
+                console.log("oldest kin got replaced");
             }
         }
     }
-    console.log(oldest);
     return oldest;
 }
 
 function getOldestKinInfo() {
         var user = getInfo(getFirstNameParam(), getLastNameParam());
         var oldestKin = getOldestKin(user);
+        return oldestKin;
     }
 
 function filterCharacteristics(query, everyPerson) {
@@ -461,16 +480,22 @@ function getCharacteristicInput() {
 
 function getFilterCharacteristics() {
     var characteristicsResults = filterCharacteristics(getCharacteristicInput(),dataObject);
-    // console.log(characteristicsResults);
+    return characteristicsResults;
     }
 
 function display(output, elementId) {
-    document.getElementById(elementId).innerHTML = "<h4>" + output.firstName + " " + output.lastName + "</h4>";
+    document.getElementById(elementId).innerHTML = "<h4>" + "<center>" + "<br>" + "<hr>" + "<br>" + "First Name:" + " " + output.firstName + "<br>" + "<br>" + "Last Name:" + " " + output.lastName + "<br>" + "<br>" + "Gender:" + " " + output.gender + "<br>" + "<br>" + "Date of Birth:" + " " + output.dob +  "<br>" + "<br>" + "Height:" + " " + output.height + "<br>" + "<br>" + "Weight:" + " " + output.weight + "<br>" + "<br>" + "Eye Color:" + " " + output.eyeColor + "<br> " + "<br>" + "<Occupation:>" + " " + output.occupation + "<br>" + "<br>" + "Parents:" + " " + output.parent + "<br>" + "<br>" + "Current Spouse:" + " " + output.currentSpouse + "</center>" + "</h4>";
 }
 
 
-
-
+function displayMultiple(outputArray, elementId) {
+    var output = "";
+    outputArray.forEach(function (user) {
+        console.log(user);
+        output+= "<h4>" + "<center>" + "<br>" + "<hr>" + "<br>" + "First Name:" + " " + user.firstName + "<br>" + "<br>" + "Last Name:" + " " + user.lastName + "<br>" + "<br>" + "Gender:" + " " + user.gender + "<br>" + "<br>" + "Date of Birth:" + " " + user.dob +  "<br>" + "<br>" + "Height:" + " " + user.height + "<br>" + "<br>" + "Weight:" + " " + user.weight + "<br>" + "<br>" + "Eye Color:" + " " + user.eyeColor + "<br> " + "<br>" + "<Occupation:>" + " " + user.occupation + "<br>" + "<br>" + "Parents:" + " " + user.parent + "<br>" + "<br>" + "Current Spouse:" + " " + user.currentSpouse + "</center>" + "</h4>";
+    });
+    document.getElementById(elementId).innerHTML = output;
+}
 
 
 
