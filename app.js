@@ -1,3 +1,4 @@
+
 var dataObject = [{
     "id": "272822514",
     "firstName": "Billy",
@@ -277,6 +278,7 @@ function getInfo(firstName, lastName) {
         var user = dataObject[i];
         if (user.firstName.toLowerCase() === firstName.toLowerCase() && user.lastName
             .toLowerCase() === lastName.toLowerCase()) {
+            console.log(user);
             return user;
         }
     }
@@ -434,7 +436,7 @@ function filterCharacteristics(query, everyPerson) {
         if (query.age!="" && query.age!=null && getAge(person) != query.age){
             return false;
         }
-        if (query.height!="" && query.height!=null && person.height != query.age){
+        if (query.height!="" && query.height!=null && person.height != query.height){
             return false;
         }
         if (query.weight!="" && query.weight!=null && person.weight != query.weight){
@@ -496,31 +498,5 @@ function displayMultiple(outputArray, elementId) {
     });
     document.getElementById(elementId).innerHTML = output;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
