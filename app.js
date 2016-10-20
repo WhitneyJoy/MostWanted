@@ -448,6 +448,7 @@ function filterCharacteristics(query, everyPerson) {
 }
 
 function getAge(person) {
+    //console.log(person);
     var todayDate = new Date();
     var todayYear = todayDate.getFullYear();
     var todayMonth = todayDate.getMonth();

@@ -470,13 +470,26 @@ describe('function filterCharacteristics', function() {
 });
 
 
-//^^ test five times to test each characteristic
-
-// describe('function getAge', function() {
-// 	it ('finds the age of the person searched based on birth date', function() {
-// 		var  =
-// 	}
-// }
+describe('function getAge', function() {
+	it ('finds the age of the person searched based on birth date', function() {
+		var ellen = {
+		"id": "313997561",
+		"firstName": "Ellen",
+		"lastName": "Madden",
+		"gender": "female",
+		"dob": "2/19/1970",
+		"height": 67,
+		"weight": 100,
+		"eyeColor": "blue",
+		"occupation": "doctor",
+		"parents": [],
+		"currentSpouse": 313207561
+	}
+	var oldness = getAge(ellen);
+	console.log(oldness);
+	expect(oldness).toEqual(45);
+	});
+});
 
 
 
